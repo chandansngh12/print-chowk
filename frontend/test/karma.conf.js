@@ -23,6 +23,7 @@ module.exports = function(config) {
       '../bower_components/angular-resource/angular-resource.js',
       '../bower_components/ng-file-upload/ng-file-upload.js',
       '../bower_components/angular-uploadcare/angular-uploadcare.js',
+      '../bower_components/angular-cookies/angular-cookies.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',

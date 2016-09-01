@@ -1,1 +1,27 @@
-<h1>hello</h1>
+<div class="container">
+  <h2>Reorder your items</h2>
+  <p>click on order now to get started</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Quote Title</th>
+        <th>Product</th>
+        <th>Quantiy</th>
+				<th>Price</th>
+				<th>Last Modified</th>
+				<th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "x in orders.records">
+        <td>{{x.qouteTitle}}</td>
+        <td>{{x.product}}</td>
+        <td>{{x.quantity}}</td>
+				<td>{{x.price}}</td>
+        <td>{{x.lastModified}}</td>
+        <td><button type="button" name="button">Order Now</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -6,10 +6,25 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1>{{orderDetails.productTitle}}</h1>
+					<div class="panel panel-default">
+							  <div class="panel-heading">
+									<p>Order Title: {{orderDetails.Product.orderType}}</p>
+									<p>Product Type: {{orderDetails.Product.productType}}</p>
+									<p>Product Title: {{orderDetails.Product.productTitle}}</p>
+									<p>Product Name: {{orderDetails.Product.productName}}</p>
+									<p>Quantity: {{orderDetails.Product.quantity}}</p>
+									<p>Dimension: {{orderDetails.Product.dimensions}}</p>
+									<p>Height: {{orderDetails.Product.heightdim}}</p>
+									<p>Width: {{orderDetails.Product.widthdim}}</p>
+									<p>Finish: {{orderDetails.Product.finish}}</p>
+									<p>Cutting: {{orderDetails.Product.cutting}}</p>
+									<p>Comment: {{orderDetails.Product.comment}}</p>
+							  </div>
+							</div>
 				</div>
-				<div class="col-md-6">
 
+				<div class="col-md-6">
+ 					<img src={{imageurl}} alt="" />
 				</div>
 			</div>
 

@@ -1,7 +1,7 @@
 
 angular.module('yapp')
-  .controller('reportsCtrl', function($scope, $state,getobject) {
-  $scope.productNames = ["Emil", "Tobias", "Linus"];
+  .controller('reportsCtrl', function($scope, $state,getobject,$http,$location) {
+  $scope.productNames = ["banner", "mugs", "tshirts"];
 	$scope.paper = ["100 GSM Matt Paper", "170 GSM Matt Paper", "250 GSM Matt Paper","300 GSM Matt Paper","Textured Paper"];
   $scope.dimensions =["mm","cm","inch","ft"];
 	$scope.finishArr=["No Lamination","Matt Lamination","Gloss Lamination","Waterproof Lamination"];
@@ -10,6 +10,7 @@ angular.module('yapp')
 	 $scope.orderDetails={
 		 orderType:"existing",
 		 productType:"paper",
+     nonPaperType:"",
 		 productTitle:"",
      productName:"",
 		 quantity:10,
@@ -20,17 +21,16 @@ angular.module('yapp')
      cutting:"",
      comment:""
 	 }
-	$scope.selectedItem="";
 
-self.savedObject = $scope.orderDetails;
+   getobject.Product = $scope.orderDetails;
 
-$scope.$watch('$scope.orderDetails', function() {
-       $scope.orderDetails = self.savedObject;
-    });
+
+
+    $scope.addOrder = function () {
 
     var request = $http({
         method: "post",
-        url:"http://localhost/print-chowk/api/login.php",
+        url:"http://192.168.5.6/print-chowk/api/createOrder.php",
         data: {
          orderType:$scope.orderDetails.orderType,
          productType:$scope.orderDetails.productType,
@@ -47,13 +47,19 @@ $scope.$watch('$scope.orderDetails', function() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
 
+    /* Check whether the HTTP Request is successful or not. */
+    request.success(function (data) {
+        if(data=="success"){
+        $location.path('/orderSummary');
+      }
+        else console.log(data);
+    });
+    }
 
 
- });
 
-angular.module('yapp')
- .service('getobject', function() {
-    self=this;
-     self.savedObject ={};
+
+
+
 
  });

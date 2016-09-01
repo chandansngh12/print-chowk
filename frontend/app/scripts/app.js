@@ -17,6 +17,7 @@ angular
   .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+    $urlRouterProvider.when('/orderSummary', '/dashboard/orderSummary');
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -46,24 +47,27 @@ angular
             url: '/orderSummary',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/orderSummary.html',
-            controller: 'reportsCtrl'
+            controller: 'orderSummary'
           })
           .state('price_list', {
             url: '/price_list',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/Price_List.html'
+            templateUrl: 'views/dashboard/Price_List.html',
+            controller: 'price_list'
           })
 
           .state('order_list', {
             url: '/order_list',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/order_list.html'
+            templateUrl: 'views/dashboard/order_list.html',
+            controller: 'order_list'
           })
 
           .state('request_qoute', {
             url: '/request_qoute',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/request_qoute.html'
+            templateUrl: 'views/dashboard/request_qoute.html',
+            controller: 'reportsCtrl'
           })
 
           .state('file_vault', {

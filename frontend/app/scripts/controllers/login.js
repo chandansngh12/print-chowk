@@ -19,7 +19,7 @@ $scope.submit = function () {
 
 var request = $http({
     method: "post",
-    url:"http://localhost/print-chowk/api/login.php",
+    url:"http://192.168.5.6/print-chowk/api/login.php",
     data: {
         username: $scope.username,
         password: $scope.password
@@ -29,8 +29,8 @@ var request = $http({
 
 /* Check whether the HTTP Request is successful or not. */
 request.success(function (data) {
-    if(data=="success"){
-    document.getElementById("message").textContent = "You have login successfully with email "+data;
+    if(data.login_status == "success"){
+      console.log(data.login_status);
     $location.path('/dashboard');}
     else console.log(data);
 });

@@ -1,1 +1,31 @@
-order_list
+<div class="container">
+  <h2>Your orders</h2>
+  <p>Review your orders here</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Product</th>
+        <th>Payment</th>
+				<th>Shipping</th>
+				<th>Date</th>
+				<th>Amount</th>
+				<th>Status</th>
+				<th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "x in orders.records">
+        <td>{{x.order_ID}}</td>
+        <td>{{x.product}}</td>
+        <td>{{x.payment}}</td>
+				<td>{{x.shipping}}</td>
+        <td>{{x.orderDate}}</td>
+        <td>{{x.amount}}</td>
+				<td>{{x.status}}</td>
+        <td><a href="/images/invoice.pdf" target="_blank" style="color:grey;"><button type="button" name="button">download invoice</button></td></a>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
