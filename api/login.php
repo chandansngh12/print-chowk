@@ -6,7 +6,8 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
-
+print_r($_POST);
+die();
 // username and password sent from form
 $myusername=addslashes($_POST['username']);
 $mypassword=addslashes($_POST['password']);
