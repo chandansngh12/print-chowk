@@ -24,13 +24,40 @@ angular.module('yapp')
 
    getobject.Product = $scope.orderDetails;
 
+            var formdata = new FormData();
+            $scope.getTheFiles = function ($files) {
+                angular.forEach($files, function (value, key) {
+                    formdata.append(key, value);
+                });
+            };
+
+            // NOW UPLOAD THE FILES.
+            $scope.uploadFiles = function () {
+
+                var request = {
+                    method: 'POST',
+                    url: '/api/fileupload/',
+                    data: formdata,
+                    headers: {
+                        'Content-Type': undefined
+                    }
+                };
+
+                // SEND THE FILES.
+                $http(request)
+                    .success(function (d) {
+                        alert(d);
+                    })
+                    .error(function () {
+                    });
+            }
 
 
     $scope.addOrder = function () {
 
     var request = $http({
         method: "post",
-        url:"http://192.168.5.6/print-chowk/api/createOrder.php",
+        url:"http://localhost/print-chowk/api/createOrder.php",
         data: {
          orderType:$scope.orderDetails.orderType,
          productType:$scope.orderDetails.productType,
@@ -43,6 +70,7 @@ angular.module('yapp')
          finish:$scope.orderDetails.finish,
          cutting:$scope.orderDetails.cutting,
          comment:$scope.orderDetails.comment
+         
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
@@ -55,11 +83,5 @@ angular.module('yapp')
         else console.log(data);
     });
     }
-
-
-
-
-
-
 
  });

@@ -19,7 +19,7 @@ $scope.submit = function () {
 
 var request = $http({
     method: "post",
-    url:"http://192.168.5.6/print-chowk/api/login.php",
+    url:"http://localhost/print-chowk/api/login.php",
     data: {
         username: $scope.username,
         password: $scope.password
