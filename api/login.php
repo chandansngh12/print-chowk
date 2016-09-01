@@ -6,7 +6,7 @@ session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 // username and password sent from form 
-
+var_dump($_POST);
 $myusername=addslashes($_POST['username']); 
 $mypassword=addslashes($_POST['password']); 
 
