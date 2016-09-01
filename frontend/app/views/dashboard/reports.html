@@ -1,0 +1,87 @@
+<div>
+	<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
+	<h2>New Orders <small>Place your order here</small></h2>
+	<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+	<div class="jumbotron">
+		<div class="container">
+			<form role="form" ng-submit="addOrder()">
+
+					<button type="button" name="button" class="btn btn-default btn-lg existingOrder" ng-click="tab=1;orderDetails.orderType='existing'">Existing Order</button>
+
+					<button type="button" name="button" class="btn btn-default btn-lg customOrder" ng-click="orderDetails.orderType='custom'">Custom Order</button>
+
+					 <div  >
+						 <div class="commonMenu" >
+							 <button type="button" name="button" class="btn btn-default btn-lg paper" ng-click="orderDetails.productType='paper'">Paper</button>
+
+		 					<button type="button" name="button" class="btn btn-default btn-lg nonPaper" ng-click="tab=1;orderDetails.productType='nonPaper'">Non Paper</button>
+
+						   	<div class="form-group" >
+			            <label for="sel1">Select Product:</label>
+										<select class="form-control" ng-disabled="orderDetails.orderType === 'custom'" id="product" ng-model="orderDetails.productName" ng-options="s for s in productNames">
+											<option value="" ng-if="false"></option>
+
+										</select>
+										</div>
+
+							<div class="paperType">
+								Product Title:<input type="text" ng-model="orderDetails.productTitle" name="name" value="" class=" form-control"><br>
+								Quantity:<input type="number" ng-model="orderDetails.quantity" name="name" value="" class=" form-control"><br>
+								<div class="form-group">
+			            <label for="sel1">Paper Type:</label>
+										<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="product" ng-model="paperType" ng-options="s for s in paper">
+											<option value="" ng-if="false"></option>
+
+										</select>
+										</div>
+
+										<div class="form-group">
+					            <label for="sel1">Dimensions:</label>
+												<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="dimensions" ng-model="orderDetails.dimensions" ng-options="s for s in dimensions">
+													<option value="" ng-if="false"></option>
+
+												</select>
+												<input type="number" name="name" placeholder="height" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.heightdim">
+												<input type="number" name="name" placeholder="width" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.widthdim">
+
+												</div>
+												<br>
+												<div class="form-group">
+							            <label for="sel1">Finish:</label>
+														<select class="form-control" id="finish" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.finish" ng-options="s for s in finishArr">
+															<option value="" ng-if="false"></option>
+														</select>
+														</div>
+														<br>
+
+													<div class="form-group">
+															<label for="sel1">Cutting:</label>
+																<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'"
+																id="finish" ng-model="orderDetails.cutting" ng-options="s for s in getcutting">
+      													<option value="" ng-if="false"></option>
+																</select>
+																</div>
+												<br>
+
+									Comments:<input type="text" name="name" value="" class=" form-control"><br>
+
+							</div>
+
+
+				 </div>
+
+
+				 <a ui-sref="orderSummary" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'">Next</a>
+				 <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'custom'" >Request A qoute</a>
+
+    </div>
+			</form>
+
+			<FORM  ACTION="http://localhost/print-chowk/api/upload.php" METHOD="POST" enctype="multipart/form-data">
+					<input type="file"  name="filename" >
+					<input type="submit" class="btn btn-primary" value="Upload File ">
+		 </FORM>
+			</p>
+		</div>
+	</div>
+</div>
