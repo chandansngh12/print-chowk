@@ -26,6 +26,9 @@ if($count>1)
     $row_array['finish'] = $row['finish'];
     $row_array['cutting'] = $row['cutting'];
     $row_array['comment'] = $row['comment'];
+    $row_array['amount'] = $row['amount'];
+    $row_array['status'] = $row['status'];
+    $row_array['paymentType'] = $row['paymentType'];
 
     array_push($return_arr,$row_array);
 }

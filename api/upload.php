@@ -32,7 +32,7 @@ print "</pre>";
       
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".$file_name);
-         //echo "Success";
+         echo "Success";
        
       }else{
          print_r($errors);
