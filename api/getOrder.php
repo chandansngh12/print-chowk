@@ -29,7 +29,10 @@ if($count>1)
     $row_array['amount'] = $row['amount'];
     $row_array['status'] = $row['status'];
     $row_array['paymentType'] = $row['paymentType'];
-
+    $row_array['city'] = $row['city'];
+    $row_array['state'] = $row['state'];
+    $row_array['landmark'] = $row['landmark'];
+    $row_array['zipcode'] = $row['zipcode'];
     array_push($return_arr,$row_array);
 }
 
