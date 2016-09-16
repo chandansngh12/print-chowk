@@ -1,0 +1,90 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add To Your Print List{{dialogData.dialogData.orderId}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Close dialog" ng-click="cancel()">
+
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Save">
+              <md-content class="md-padding">
+                <h1 class="md-display-2">Save details</h1>
+                <div layout="row">
+                  <md-input-container flex="50">
+                    <label>Order Title</label>
+                    <input required name="orderTitle" ng-model="dialogData.orderTitle">
+                    <div ng-messages="projectForm.orderTitle.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container flex="50">
+                    <label>Quantity</label>
+                    <input disabled required name="Quantity" ng-model="dialogData.quantity">
+                    <div ng-messages="projectForm.Quantity.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+                  <md-input-container flex="50">
+                    <label>Product</label>
+                    <input disabled required name="Quantity" ng-model="dialogData.productTitle">
+                    <div ng-messages="projectForm.Quantity.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+                </div>
+              </md-content>
+            </md-tab>
+
+            <md-tab label="Edit and Save ">
+              <md-content class="md-padding">
+                <h1 class="md-display-2">Edit details</h1>
+                <div layout="row">
+                  <md-input-container flex="50">
+                    <label>Order Title</label>
+                    <input required name="orderTitle" ng-model="dialogData.orderTitle">
+                    <div ng-messages="projectForm.orderTitle.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container flex="50">
+                    <label>Quantity</label>
+                    <input required name="Quantity" ng-model="dialogData.quantity">
+                    <div ng-messages="projectForm.Quantity.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+                  <md-input-container flex="50">
+                    <label>Product</label>
+                    <input disabled required name="Quantity" ng-model="dialogData.productTitle">
+                    <div ng-messages="projectForm.Quantity.$error">
+                      <div ng-message="required">This is required.</div>
+                    </div>
+                  </md-input-container>
+                </div>
+              </md-content>
+            </md-tab>
+
+
+
+          </md-tabs>
+        </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="answer('not useful')" >
+        Save
+      </md-button>
+      <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

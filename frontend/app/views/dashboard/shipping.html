@@ -1,0 +1,92 @@
+<div>
+	<a ui-sref="orderSummary" class="pull-right btn btn-primary btn-outline btn-rounded">Back</a>
+	<h2>Shipping Details <small> Enter your shipping details </small></h2>
+	<span class="glyphicon glyphicon-repeat bg-fade"></span>
+		<div class="jumbotron md-whiteframe-1dp">
+		<div class="container">
+			<div class="row">
+				<md-radio-group ng-model="addressType" >
+
+				<div class="col-md-6" >
+					<md-radio-button value="existing"  style="font-size:30px;" >EXISTING ADDRESS</md-radio-button>
+
+						<!-- <button type="button"  class="btn btn-default btn-lg btn-block"></button> -->
+
+						<!-- <label>Dimensions  </label>
+						<md-select  name="dimensions" ng-model="orderDetails.dimensions" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'">
+							<md-option value="{{s}}"  ng-repeat="s in existingAdd">{{s}}</md-option>
+						</md-select> -->
+
+
+						<div layout="row" layout-align="start" flex>
+ 								<md-input-container flex>
+ 									<label>Select Finish Type</label>
+ 									<md-select  name="paperType" ng-model="orderDetails.dimensions" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'" >
+ 										<md-option value="{{s}}"  ng-repeat="s in existingAdd">{{s}}</md-option>
+ 									</md-select>
+ 									<div class="errors" ng-messages="myForm.favoriteColor.$error">
+ 										<div ng-message="required">Required</div>
+ 									</div>
+ 								</md-input-container>
+
+ 	            </div>
+
+
+						      <!-- <md-radio-button value="Mango">Mango</md-radio-button> -->
+
+
+
+						<!-- <select class="form-control" ng-disabled="addressType === 'new_add'" id="finish" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.finish" ng-options="s for s in existingAdd">
+							<option value="" ng-if="false"></option>
+						</select> -->
+
+					</div>
+
+
+				<div class="col-md-6" >
+					<md-radio-button value="new_add"  style="font-size:30px;">NEW ADDRESS</md-radio-button>
+
+
+					<div layout="column" layout-align="start" flex>
+						<form ng-disabled="addressType === 'existing'">
+
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>Name</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>City</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>State</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>Landmark</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>Zip Code</label>
+								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+								 <label>Country</label>
+								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+
+					</form>
+
+						 </div>
+
+
+				</div>
+			</md-radio-group>
+
+			</div>
+			<br>
+     <center><a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="gotoState()" >Proceed To Payment</a></center>
+		</div>
+
+</div>
+</div>

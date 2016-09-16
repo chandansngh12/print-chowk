@@ -24,7 +24,7 @@
 
 							<md-input-container flex>
 								<label>Select Product</label>
-								<md-select  name="selectProduct" ng-model="orderDetails.productName" ng-disabled="orderDetails.orderType === 'custom'"  				required>
+								<md-select  name="selectProduct" ng-model="orderDetails.productName" ng-disabled="orderDetails.orderType === 'custom'"  	ng-required="orderDetails.orderType === 'existing'">
 									<md-option value="{{s}}"  ng-repeat=" s in productNames" >{{s}}</md-option>
 								</md-select>
 								<div class="errors" ng-messages="myForm.favoriteColor.$error">
@@ -40,9 +40,9 @@
 						</md-radio-group>
 
 						<!-- nonPaper Type -->
-						<md-input-container class="md-block" ng-hide="orderDetails.productType === 'paper'" >
+						<md-input-container class="md-block"  >
 					    <label>Non-Paper Type</label>
-					    <input  type="text" name="nonPaperType"  ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
+					    <input  type="text" name="nonPaperType" ng-disabled="orderDetails.productType ==='paper'" ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
 					  </md-input-container>
 						<!-- <md-input-container class="md-block" ng-show="orderDetails.productType === 'nonPaper'" >
 								 <label>Non-Paper Type</label>
@@ -107,7 +107,7 @@
 						<div layout="row" layout-align="start" flex>
 								<md-input-container flex>
 									<label>Select Finish Type</label>
-									<md-select  name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.orderType === 'nonPaper'"  required>
+									<md-select  name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.productType ==='nonPaper'"  ng-required="orderDetails.productType === 'paper'">
 										<md-option value="{{s}}"  ng-repeat="s in finishArr">{{s}}</md-option>
 									</md-select>
 									<div class="errors" ng-messages="myForm.favoriteColor.$error">
@@ -122,7 +122,7 @@
 			 <div layout="row" layout-align="start" flex>
 					 <md-input-container flex>
 						 <label>Select Cutting Type</label>
-						 <md-select  name="paperType" ng-model="orderDetails.cutting" ng-disabled="orderDetails.orderType === 'nonPaper'"  required>
+						 <md-select  name="paperType" ng-model="orderDetails.cutting"  ng-disabled="orderDetails.productType ==='nonPaper'" ng-required="orderDetails.productType === 'paper'">
 							 <md-option value="{{s}}"  ng-repeat="s in getcutting">{{s}}</md-option>
 						 </md-select>
 						 <div class="errors" ng-messages="myForm.favoriteColor.$error">
@@ -131,15 +131,29 @@
 					 </md-input-container>
 
 				 </div>
+					<br>
+					<div layout="row" layout-align="start" flex>
+							<md-input-container flex >
+								<label>I need this product in</label>
+								<md-select  name="deliveryTime" ng-model="orderDetails.deliveryTime"  >
+									<md-option>5 Days</md-option>
+									<md-option>10 Days</md-option>
+									<md-option>Next Month</md-option>
 
+								</md-select>
+								<div class="errors" ng-messages="myForm.favoriteColor.$error">
+									<div ng-message="required">Required</div>
+								</div>
+							</md-input-container>
+
+						</div>
 					<br>
 
 				 <!-- comments -->
-					<md-input-container class="md-block">
-							 <label>Comments</label>
-							 <input type="text" name="Comments"  ng-model="orderDetails.comment"/>
-					</md-input-container>
-
+				 <md-input-container class="md-block">
+							<label>Comments</label>
+							<input  type="text" name="Quantity"  ng-model="orderDetails.comment"/>
+				 </md-input-container>
 
 
 

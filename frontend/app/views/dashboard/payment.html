@@ -1,0 +1,275 @@
+<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
+<h2 style="text-transform: capitalize"> Payment <small></small></h2>
+<!-- <span class="glyphicon glyphicon-dashboard bg-fade"></span> -->
+<br>
+
+<div class="" layout="row" layout-xs="column">
+
+	<div class="md-whiteframe-1dp " flex flex-gt-sm="60"    style="margin-right:4px;background-color:white;">
+
+    <div class="" layout="row">
+
+
+		<md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-3 ">
+			<div class="md-toolbar-tools">
+				<span>Order Details</span>
+			 </div>
+			 </md-toolbar>
+
+		</div>
+		<div class="" layout="row" layout-xs="column">
+			<div class="" flex style="margin-top:10px;margin-bottom:10px;margin-left:10px;">
+				<img src="images/product.png" alt="" class="img-responsive"/>
+			</div>
+			<div class="" flex style="margin-left:5px; margin-top:10px;">
+				<table md-table class="paymentTable">
+					<thead md-head>
+					<tr>
+						<th md-column>Product</th>
+						<td >Banner</td>
+					</tr>
+					<tr>
+						<th md-column>Quantity</th>
+						<td>40</td>
+					</tr>
+					<tr>
+						<th md-column>Dimension</th>
+						<td >10X20 mm</td>
+					</tr>
+					<tr>
+						<th md-column>Finish</th>
+						<td >end to end</td>
+					</tr>
+					<tr>
+						<th md-column>Cutting</th>
+						<td >something</td>
+					</tr>
+					</thead>
+				</table>
+				<md-divider></md-divider>
+				<h4 class="">   Total Amount: ₹36000</h4>
+				<md-divider></md-divider>
+				<h4>Shipping</h4>
+				<span>
+					Street no.25,House no. D-15,<br>
+					New Delhi-110044,<br>
+					India
+				</span>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+  <div class="" flex flex-gt-sm="40">
+   <div class="md-whiteframe-1dp" layout="column" style="background-color:white;">
+		 <md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-3 ">
+ 			<div class="md-toolbar-tools">
+ 				<span>Payment Information</span>
+ 			 </div>
+ 			 </md-toolbar>
+    <div class="" flex>
+      <p>
+      	CREDIT <p class="pull-right">₹36000</p>
+      </p>
+			 <!-- <p > <p> Pay On Account</h2><span class="glyphicon glyphicon-piggy-bank"></span>Credit<span>₹0</span></p> -->
+
+    </div>
+		<div class="" flex layout="column">
+			<label for="">Select Payment type</label>
+			<md-radio-group ng-model="paymentType" class="md-primary">
+
+				<md-radio-button value="Apple" class="md-primary">Pay on Account</md-radio-button>
+	      <md-radio-button value="Banana"class="md-primary"> Razor Pay </md-radio-button>
+
+
+    </md-radio-group>
+
+		<md-button class="md-raised md-primary">Pay Now</md-button>
+
+    </div>
+ 		</div>
+   </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="md-whiteframe-1dp" layout="column">
+	<div class="" flex="70">
+
+
+	<md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-3 ">
+	  <div class="md-toolbar-tools">
+	    <span>Order Details</span>
+	   </div>
+		 </md-toolbar>
+
+
+		    <div class="row">
+
+		<div class="col-md-3" style="margin-top:10px;margin-bottom:10px;margin-left:10px;">
+
+			<img src="images/product.png" alt="" class="img-responsive"/>
+			<br>
+
+		</div>
+
+		<div class="col-md-4">
+
+				<table md-table >
+					<thead md-head>
+						<tr md-row>
+							<th md-column >Order ID</th>
+							<th md-column >Product</th>
+							<th md-column >Quantity</th>
+							<th md-column >Dimensions</th>
+							<th md-column >Dimensions</th>
+
+
+
+						</tr>
+					</thead>
+					<tbody md-body>
+						<tr md-row md-auto-select  style="text-transform: capitalize;">
+
+							<td md-cell><h5>1212</h5></td>
+							<td md-cell>Banner</td>
+							<td md-cell>40</td>
+							<td md-cell>128X124 mm</td>
+							<td md-cell>{{x.status}}</td>
+
+
+						</tr>
+					</tbody>
+				</table>
+
+<br>
+				<md-divider></md-divider>
+
+					<h3 class="col-md-offset-3">Total Amount: ₹<b>23000</b></h3>
+
+         <md-divider></md-divider>
+					<br>
+				 <div class="">
+        <p>
+
+
+					<h3>Shipping</h3>
+
+					<p class="pull-right">
+
+						Street no.25,House no. D-15,<br>
+						New Delhi-110044,<br>
+						India
+					</p>
+					</p>
+				 </div>
+		</div>
+	 	</div>
+</div>
+</div>
+<div class="" layout="row">
+
+<md-toolbar class="md-table-toolbar  md-hue-3 ">
+	<div class="md-toolbar-tools">
+		<span>Payment Information</span>
+
+	 </div>
+	 </md-toolbar>
+
+ </div>
+
+<br> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div layout="column">
+
+<div layout="row" >
+<div  class="" flex >
+	<md-toolbar class="md-table-toolbar  md-hue-3 ">
+	  <div class="md-toolbar-tools">
+	    <span>Review Your Orders Here</span>
+	   </div>
+		</md-toolbar>
+		<div class="">
+  <md-list flex>
+		<md-list-item>
+	<p>Product: {{orderDetails.productName}}</p>
+	</md-list-item>
+<md-divider></md-divider>
+	<md-list-item>
+	<p>Paper Type: {{orderDetails.paperType}}</p>
+  </md-list-item>
+	<md-divider></md-divider>
+
+	<md-list-item>
+	<p>Quantity: {{orderDetails.quantity}}</p>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-list-item>
+	<p>Dimension: {{orderDetails.dimensions}}</p>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-list-item>
+	<p>Height: {{orderDetails.heightdim}}</p>
+	</md-list-item>
+	<md-divider></md-divider>
+	<md-list-item>
+	<p>Width: {{orderDetails.widthdim}}</p>
+   </md-list-item>
+	 <md-divider></md-divider>
+	 <md-list-item>
+	<p>Finish: {{orderDetails.finish}}</p>
+</md-list-item>
+<md-divider></md-divider>
+<md-list-item>
+	<p>Cutting: {{orderDetails.cutting}}</p>
+</md-list-item>
+<md-divider></md-divider>
+<md-list-item>
+	<p>Comment: {{orderDetails.comment}}</p>
+</md-list-item>
+	</md-list>
+</div>
+
+</div>
+<div  flex>
+	<div layout="column">
+     <div class="" flex>
+			 <iframe width="100%" height="565px" ng-src="{{trustSrcurl(imagePath)}}" ></iframe>
+     </div>
+		 <div class="">
+		 	<md-button class="md-primary"></md-button>
+		 </div>
+	</div>
+</div>
+</div>
+</div> -->

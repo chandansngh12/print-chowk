@@ -1,0 +1,37 @@
+<div>
+	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Back</a>
+	<h2>Summerize <small> your order </small></h2>
+	<span class="glyphicon glyphicon-repeat bg-fade"></span>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+							  <div class="panel-heading">
+									<p>Order Title: {{orderDetails.Product.orderType}}</p>
+									<p>Product Type: {{orderDetails.Product.productType}}</p>
+									<p>Product Title: {{orderDetails.Product.productTitle}}</p>
+									<p>Product Name: {{orderDetails.Product.productName}}</p>
+									<p>Paper Type: {{orderDetails.Product.paperType}}</p>
+									<p>Quantity: {{orderDetails.Product.quantity}}</p>
+									<p>Dimension: {{orderDetails.Product.dimensions}}</p>
+									<p>Height: {{orderDetails.Product.heightdim}}</p>
+									<p>Width: {{orderDetails.Product.widthdim}}</p>
+									<p>Finish: {{orderDetails.Product.finish}}</p>
+									<p>Cutting: {{orderDetails.Product.cutting}}</p>
+									<p>Comment: {{orderDetails.Product.comment}}</p>
+							  </div>
+							</div>
+				</div>
+
+				<div class="col-md-6">
+
+
+         <iframe width=400px height=520px ng-src="{{trustSrcurl(imagePath)}}" width="" height=""></iframe>
+
+				</div>
+			</div>
+     <center><a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="addOrder()" >Confirm</a> </center>
+		</div>
+	</div>
+</div>

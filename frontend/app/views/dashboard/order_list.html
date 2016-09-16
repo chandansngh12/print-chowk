@@ -6,10 +6,10 @@
 
 <!-- exact table from live demo -->
 <md-table-container class="md-whiteframe-1dp">
-  <table md-table md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
-    <thead md-head>
+  <table md-table  md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
+    <thead md-head >
       <tr md-row>
-        <th md-column >Order ID</th>
+        <th md-column md-order-by="details.orderId" md-desc>Order ID</th>
         <th md-column >Product</th>
         <th md-column >Payment</th>
         <th md-column >Shipping</th>
@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody md-body>
-      <tr md-row md-auto-select ng-repeat="x in details" style="text-transform: capitalize;">
+      <tr md-row md-auto-select ng-repeat="x in details | orderBy : -orderId" style="text-transform: capitalize;">
 
 				<td md-cell>{{x.orderId}}</td>
 				<td md-cell>{{x.productTitle}}</td>
