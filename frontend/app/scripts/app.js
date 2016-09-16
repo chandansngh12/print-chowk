@@ -12,12 +12,19 @@ angular
   .module('yapp', [
     'ui.router',
     'ngAnimate',
-    'ng-uploadcare'
+    'ng-uploadcare',
+    'file-model',
+    'ngMaterial',
+    'ngSimpleUpload',
+    'md.data.table',
+    'ngCookies',
+    'LocalStorageModule'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
     $urlRouterProvider.when('/orderSummary', '/dashboard/orderSummary');
+    $urlRouterProvider.when('/thankYou', '/dashboard/thankYou');
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -31,6 +38,12 @@ angular
           parent: 'base',
           templateUrl: 'views/login.html',
           controller: 'LoginCtrl'
+        })
+        .state('payment', {
+          url: '/payment',
+          parent: 'dashboard',
+          templateUrl: 'views/dashboard/payment.html',
+          controller: 'payment'
         })
         .state('dashboard', {
           url: '/dashboard',
@@ -56,6 +69,20 @@ angular
             controller: 'price_list'
           })
 
+          .state('showQuotes', {
+            url: '/showQuotes',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/showQuotes.html',
+            controller: 'showQuotes'
+          })
+
+          .state('thankYou', {
+            url: '/thankYou',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/thankYou.html'
+
+          })
+
           .state('order_list', {
             url: '/order_list',
             parent: 'dashboard',
@@ -67,19 +94,33 @@ angular
             url: '/request_qoute',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/request_qoute.html',
-            controller: 'reportsCtrl'
+            controller: 'requestQoute'
+          })
+          .state('requestSummary', {
+            url: '/requestSummary',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/requestSummary.html',
+            controller: 'requestSummary'
           })
 
           .state('file_vault', {
             url: '/file_vault',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/file_vault.html'
+            templateUrl: 'views/dashboard/file_vault.html',
+            controller: 'fileVault'
           })
 
           .state('accounts_setting', {
             url: '/accounts_setting',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/accounts_setting.html'
+          })
+          .state('shipping', {
+            url: '/shipping',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/shipping.html',
+            controller: 'shippingCtrl'
+
           })
 
           .state('printopedia', {

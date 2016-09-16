@@ -24,6 +24,12 @@ module.exports = function(config) {
       '../bower_components/ng-file-upload/ng-file-upload.js',
       '../bower_components/angular-uploadcare/angular-uploadcare.js',
       '../bower_components/angular-cookies/angular-cookies.js',
+      '../bower_components/angular-file-model/angular-file-model.js',
+      '../bower_components/angular-aria/angular-aria.js',
+      '../bower_components/angular-messages/angular-messages.js',
+      '../bower_components/angular-material/angular-material.js',
+      '../bower_components/angular-material-data-table/dist/md-data-table.js',
+      '../bower_components/angular-local-storage/dist/angular-local-storage.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',

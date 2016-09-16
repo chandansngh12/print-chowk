@@ -1,10 +1,12 @@
 angular.module('yapp')
  .service('getobject', function() {
+  var self=this;
+  self.Product={ };
+  this.isVisited=0;
 
-	 var Product ={
-	 };
+  // return self.Product;
 
-	
-    return Product;
+
+
 
   });

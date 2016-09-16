@@ -8,7 +8,7 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('LoginCtrl', function($scope,$location,$http) {
+  .controller('LoginCtrl', function($scope,$location,$http,$rootScope) {
 
 
 
@@ -38,34 +38,5 @@ request.success(function (data) {
 
 
 
-
-
-
-
-    /*$scope.submit = function() {
-
-  $scope.user =
-
-
-
-   $http({
-    method: 'POST',
-    url: '192.168.5.3/print-chowk/api/login.php',
-    headers: {
-        'Content-Type': 'application/json', /*or whatever type is relevant
-        'Accept': 'application/json' /* ditto
-    },
-    data: {
-
-                userid :" ",
-                password :" "
-
-    }
-})
-
-
-
-      return false;
-    }*/
 
   });

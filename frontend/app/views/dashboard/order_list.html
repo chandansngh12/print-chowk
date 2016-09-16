@@ -1,31 +1,39 @@
-<div class="container">
-  <h2>Your orders</h2>
-  <p>Review your orders here</p>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Order ID</th>
-        <th>Product</th>
-        <th>Payment</th>
-				<th>Shipping</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Status</th>
-				<th>Action</th>
+<md-toolbar class="md-table-toolbar md-default ">
+  <div class="md-toolbar-tools md-title">
+    <span>Review Your Orders Here</span>
+  </div>
+</md-toolbar>
+
+<!-- exact table from live demo -->
+<md-table-container class="md-whiteframe-1dp">
+  <table md-table md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
+    <thead md-head>
+      <tr md-row>
+        <th md-column >Order ID</th>
+        <th md-column >Product</th>
+        <th md-column >Payment</th>
+        <th md-column >Shipping</th>
+        <th md-column >Date</th>
+        <th md-column >Amount</th>
+        <th md-column >Status</th>
+        <th md-column >Actions</th>
       </tr>
     </thead>
-    <tbody>
-      <tr ng-repeat = "x in orders.records">
-        <td>{{x.order_ID}}</td>
-        <td>{{x.product}}</td>
-        <td>{{x.payment}}</td>
-				<td>{{x.shipping}}</td>
-        <td>{{x.orderDate}}</td>
-        <td>{{x.amount}}</td>
-				<td>{{x.status}}</td>
-        <td><a href="/images/invoice.pdf" target="_blank" style="color:grey;"><button type="button" name="button">download invoice</button></td></a>
-      </tr>
+    <tbody md-body>
+      <tr md-row md-auto-select ng-repeat="x in details" style="text-transform: capitalize;">
 
+				<td md-cell>{{x.orderId}}</td>
+				<td md-cell>{{x.productTitle}}</td>
+				<td md-cell>{{x.paymentType}}</td>
+				<td md-cell>{{x.city}},{{x.state}},<br>{{x.landmark}},<br>{{x.zipcode}}</td>
+				<td md-cell>{{x.date}}</td>
+				<td md-cell> ₹{{x.amount}}</td>
+				<td md-cell>{{x.status}}</td>
+        <td md-cell><md-button class="md-raised md-primary" ng-click="getDataForDialog(x);showTabDialog($event)">Add to Price list</md-button></td>
+
+      </tr>
     </tbody>
   </table>
-</div>
+</md-table-container>
+
+<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>

@@ -1,6 +1,6 @@
 <div>
 	<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
-	<h2>Request Quote <small>Place your order here</small></h2>
+	<h2>Request Quote <small>Ask For Your Custom Product</small></h2>
 	<span class="glyphicon glyphicon-dashboard bg-fade"></span>
 	<div class="jumbotron">
 		<div class="container">
@@ -9,9 +9,9 @@
 
 					 <div>
 						 <div class="commonMenu" >
-							 <button type="button" name="button" class="btn btn-default btn-lg paper" ng-click="orderDetails.productType='paper'">Paper</button>
+							 <md-button type="button" name="button" class="md-raised md-warn" ng-click="orderDetails.productType='paper'">Paper</md-button>
 
-		 					<button type="button" name="button" class="btn btn-default btn-lg nonPaper" ng-click="tab=1;orderDetails.productType='nonPaper'">Non Paper</button>
+							 <md-button type="button" name="button" class="md-raised md-warn" ng-click="tab=1;orderDetails.productType='nonPaper'">Non Paper</md-button>
 
 										</select>
 										</div>
@@ -22,7 +22,7 @@
 								Quantity:<input type="number" ng-model="orderDetails.quantity" name="name" value="" class=" form-control"><br>
 								<div class="form-group">
 			            <label for="sel1">Paper Type:</label>
-										<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="product" ng-model="paperType" ng-options="s for s in paper">
+										<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="product" ng-model="orderDetails.paperType" ng-options="s for s in paper">
 											<option value="" ng-if="false"></option>
 
 										</select>
@@ -64,16 +64,12 @@
 				 </div>
 
 
-				 <a ui-sref="orderSummary" type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" >Next</a>
-				 <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="addOrder()" >Request A qoute</a>
+				 <a class="btn btn-primary btn-lg btn-outline btn-rounded" href="#/dashboard/requestSummary">Request A qoute</a>
 
     </div>
 			</form>
 
-			<FORM  ACTION="http://localhost/print-chowk/api/upload.php" METHOD="POST" enctype="multipart/form-data">
-					<input type="file"  name="filename" >
-					<input type="submit" class="btn btn-primary" value="Upload File ">
-		 </FORM>
+
 			</p>
 		</div>
 	</div>

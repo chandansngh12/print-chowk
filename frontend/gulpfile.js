@@ -134,7 +134,7 @@ gulp.task('wiredep', function() {
 gulp.task('watch', ['connect'], function() {
   $.livereload.listen();
 
-  // watch for changes
+//  watch for changes
   gulp.watch([
     'app/**/*.html',
     '.tmp/styles/**/*.css',

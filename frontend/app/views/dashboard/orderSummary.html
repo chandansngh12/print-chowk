@@ -7,27 +7,33 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="panel panel-default">
-							  <div class="panel-heading">
-									<p>Order Title: {{orderDetails.Product.orderType}}</p>
-									<p>Product Type: {{orderDetails.Product.productType}}</p>
-									<p>Product Title: {{orderDetails.Product.productTitle}}</p>
-									<p>Product Name: {{orderDetails.Product.productName}}</p>
-									<p>Quantity: {{orderDetails.Product.quantity}}</p>
-									<p>Dimension: {{orderDetails.Product.dimensions}}</p>
-									<p>Height: {{orderDetails.Product.heightdim}}</p>
-									<p>Width: {{orderDetails.Product.widthdim}}</p>
-									<p>Finish: {{orderDetails.Product.finish}}</p>
-									<p>Cutting: {{orderDetails.Product.cutting}}</p>
-									<p>Comment: {{orderDetails.Product.comment}}</p>
+							  <div class="panel-heading md-whiteframe-2dp">
+									<p>Order Title: {{orderDetails.orderType}}</p>
+									<p>Product Type: {{orderDetails.productType}}</p>
+									<p>Product Title: {{orderDetails.productTitle}}</p>
+									<p>Product Name: {{orderDetails.productName}}</p>
+									<p>Paper Type: {{orderDetails.paperType}}</p>
+									<p>Quantity: {{orderDetails.quantity}}</p>
+									<p>Dimension: {{orderDetails.dimensions}}</p>
+									<p>Height: {{orderDetails.heightdim}}</p>
+									<p>Width: {{orderDetails.widthdim}}</p>
+									<p>Finish: {{orderDetails.finish}}</p>
+									<p>Cutting: {{orderDetails.cutting}}</p>
+									<p>Comment: {{orderDetails.comment}}</p>
 							  </div>
 							</div>
 				</div>
 
 				<div class="col-md-6">
- 					<img src={{imageurl}} alt="" />
+
+
+
+				 <iframe width="100%" height="565px" ng-src="{{trustSrcurl(imagePath)}}" ></iframe>
+
+
 				</div>
 			</div>
-
+     <center><a href="#/dashboard/shipping" class="btn btn-primary btn-lg btn-outline btn-rounded">Next</a> </center>
 		</div>
 	</div>
 </div>

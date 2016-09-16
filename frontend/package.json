@@ -48,7 +48,5 @@
     "wiredep": "^2.2.2",
     "yargs": "^3.3.1"
   },
-  "dependencies": {
-    "gulp-install": "^0.6.0"
-  }
+  "dependencies": {}
 }

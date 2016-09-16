@@ -57,14 +57,14 @@
       	}
       }
     }
-    @media (min-width: 768px) {
+    @media (min-width: 68px) {
       .sidebar {
         position: fixed;
         top: 0px;
         bottom: 0;
         left: 0;
         z-index: 1000;
-        display: block;
+        display: inline;
         padding: 0 20px 20px 20px;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
@@ -156,7 +156,7 @@
       font-size: 100px;
       color:#7db87e;
 			text-align :center;
-      
+
 
     }
 
@@ -164,14 +164,14 @@
 background-color: white;
 padding-top: 10px;
 padding-bottom:5px;
- 
+
 }
 
 .overview-menu:hover{
 background-color: #3ca2e0;
 padding-top: 10px;
 padding-bottom:5px;
- 
+
 }
 
 .overview-menu a{
@@ -200,4 +200,17 @@ color:grey;
 .overview-tab a:hover{
 	color:white;
 	text-decoration: none;
+}
+//added by victor
+.menu_open{
+	position:absolute;
+  bottom:0;
+	right: 0;
+}
+
+.vertical-divider {
+  border-top-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  height: 100%;
 }

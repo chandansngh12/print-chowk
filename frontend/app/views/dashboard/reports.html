@@ -1,88 +1,168 @@
 <div>
 	<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
-	<h2>New Orders <small>Place your order here</small></h2>
+	<h2 style="text-transform: capitalize"> New Order <small>Get Set Print</small></h2>
 	<span class="glyphicon glyphicon-dashboard bg-fade"></span>
-	<div class="jumbotron">
+	<div class="jumbotron md-whiteframe-1dp">
 		<div class="container">
-			<form role="form">
+			<form  name="orderform" method="POST" enctype="multipart/form-data" role="form" novalidate>
 
-					<button type="button" name="button" class="btn btn-default btn-lg existingOrder" ng-click="tab=1;orderDetails.orderType='existing'">Existing Order</button>
 
-					<button type="button" name="button" class="btn btn-default btn-lg customOrder" ng-click="orderDetails.orderType='custom'">Custom Order</button>
+				<md-radio-group ng-model="orderDetails.orderType" layout="row">
 
-					 <div  >
-						 <div class="commonMenu" >
-							 <button type="button" name="button" class="btn btn-default btn-lg paper" ng-click="orderDetails.productType='paper'">Paper</button>
+					<md-radio-button value="existing" class="md-primary"><h4>Existing</h4></md-radio-button>
+					<md-radio-button value="custom" > <h4>Custom Order</h4> </md-radio-button>
 
-		 					<button type="button" name="button" class="btn btn-default btn-lg nonPaper" ng-click="tab=1;orderDetails.productType='nonPaper'">Non Paper</button>
 
-						   	<div class="form-group" >
-			            <label for="sel1">Select Product:</label>
-										<select class="form-control" ng-disabled="orderDetails.orderType === 'custom'" id="product" ng-model="orderDetails.productName" ng-options="s for s in productNames">
-											<option value="" ng-if="false"></option>
+				</md-radio-group>
 
-										</select>
-										</div>
 
-							<div class="paperType">
-								Non-Paper Type<input type="text" ng-disabled="orderDetails.productType === 'paper'" ng-model="orderDetails.nonPaperType" name="name" value="" class=" form-control">
-								Product Title:<input type="text" ng-model="orderDetails.productTitle" name="name" value="" class=" form-control"><br>
-								Quantity:<input type="number" ng-model="orderDetails.quantity" name="name" value="" class=" form-control"><br>
-								<div class="form-group">
-			            <label for="sel1">Paper Type:</label>
-										<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="product" ng-model="paperType" ng-options="s for s in paper">
-											<option value="" ng-if="false"></option>
+				<div><br>
 
-										</select>
-										</div>
 
-										<div class="form-group">
-					            <label for="sel1">Dimensions:</label>
-												<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'" id="dimensions" ng-model="orderDetails.dimensions" ng-options="s for s in dimensions">
-													<option value="" ng-if="false"></option>
+						<!-- select product -->
+						<div layout="row" layout-align="start" flex>
 
-												</select>
-												<input type="number" name="name" placeholder="height" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.heightdim">
-												<input type="number" name="name" placeholder="width" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.widthdim">
+							<md-input-container flex>
+								<label>Select Product</label>
+								<md-select  name="selectProduct" ng-model="orderDetails.productName" ng-disabled="orderDetails.orderType === 'custom'"  				required>
+									<md-option value="{{s}}"  ng-repeat=" s in productNames" >{{s}}</md-option>
+								</md-select>
+								<div class="errors" ng-messages="myForm.favoriteColor.$error">
+									<div ng-message="required">Required</div>
+								</div>
+							</md-input-container>
+						</div>
 
-												</div>
-												<br>
-												<div class="form-group">
-							            <label for="sel1">Finish:</label>
-														<select class="form-control" id="finish" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.finish" ng-options="s for s in finishArr">
-															<option value="" ng-if="false"></option>
-														</select>
-														</div>
-														<br>
 
-													<div class="form-group">
-															<label for="sel1">Cutting:</label>
-																<select class="form-control" ng-disabled="orderDetails.productType === 'nonPaper'"
-																id="finish" ng-model="orderDetails.cutting" ng-options="s for s in getcutting">
-      													<option value="" ng-if="false"></option>
-																</select>
-																</div>
-												<br>
+						<md-radio-group ng-model="orderDetails.productType" layout="row">
+							<md-radio-button value="paper" class="md-primary"><h4>Paper</h4></md-radio-button>
+							<md-radio-button value="nonPaper"><h4>nonPaper</h4></md-radio-button>
+						</md-radio-group>
 
-									Comments:<input type="text" name="name" ng-model="orderDetails.comment" value="" class=" form-control"><br>
+						<!-- nonPaper Type -->
+						<md-input-container class="md-block" ng-hide="orderDetails.productType === 'paper'" >
+					    <label>Non-Paper Type</label>
+					    <input  type="text" name="nonPaperType"  ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
+					  </md-input-container>
+						<!-- <md-input-container class="md-block" ng-show="orderDetails.productType === 'nonPaper'" >
+								 <label>Non-Paper Type</label>
+								 <input  type="text" name="nonPaperType"  ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
+						</md-input-container> -->
+
+						<!-- product Title  -->
+						<md-input-container class="md-block">
+								 <label>Product Title</label>
+								 <input required type="text" name="productTitle" ng-model="orderDetails.productTitle"/>
+						</md-input-container>
+
+						<!-- quantity -->
+						<md-input-container class="md-block">
+								 <label>Quantity</label>
+								 <input required type="number" name="Quantity"  ng-model="orderDetails.quantity"/>
+						</md-input-container>
+
+			    <!-- paper type -->
+					<div layout="row" layout-align="start" flex>
+							<md-input-container flex>
+								<label>Select Paper type</label>
+								<md-select  name="paperType" ng-model="orderDetails.paperType" ng-disabled="orderDetails.orderType === 'nonPaper'"  required>
+									<md-option value="{{s}}"  ng-repeat="s in paper">{{s}}</md-option>
+								</md-select>
+								<div class="errors" ng-messages="myForm.favoriteColor.$error">
+									<div ng-message="required">Required</div>
+								</div>
+							</md-input-container>
+
+            </div>
+					<br>
+						<!-- dimensions -->
+							<div layout="row" layout-align="start" flex>
+								<md-input-container class="md-block">
+										 <label>Height</label>
+										 <input required type="number" name="Height"  ng-model="orderDetails.heightdim"/>
+								</md-input-container>
+								<div layout="row" layout-align="start" flex>
+									<md-input-container class="md-block">
+											 <label>Width</label>
+											 <input required type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+									</md-input-container>
+
+						<md-input-container flex>
+							<label>Dimensions  </label>
+							<md-select  name="dimensions" ng-model="orderDetails.dimensions"  required>
+								<md-option value="{{s}}"  ng-repeat="s in dimensions">{{s}}</md-option>
+							</md-select>
+							<div class="errors" ng-messages="myForm.favoriteColor.$error">
+								<div ng-message="required">Required</div>
+							</div>
+						</md-input-container>
+
 
 							</div>
+						</div>
 
-						
+
+						<br>
+						<!-- finish -->
+						<div layout="row" layout-align="start" flex>
+								<md-input-container flex>
+									<label>Select Finish Type</label>
+									<md-select  name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.orderType === 'nonPaper'"  required>
+										<md-option value="{{s}}"  ng-repeat="s in finishArr">{{s}}</md-option>
+									</md-select>
+									<div class="errors" ng-messages="myForm.favoriteColor.$error">
+										<div ng-message="required">Required</div>
+									</div>
+								</md-input-container>
+
+	            </div>
+
+						<br>
+       <!-- cutting -->
+			 <div layout="row" layout-align="start" flex>
+					 <md-input-container flex>
+						 <label>Select Cutting Type</label>
+						 <md-select  name="paperType" ng-model="orderDetails.cutting" ng-disabled="orderDetails.orderType === 'nonPaper'"  required>
+							 <md-option value="{{s}}"  ng-repeat="s in getcutting">{{s}}</md-option>
+						 </md-select>
+						 <div class="errors" ng-messages="myForm.favoriteColor.$error">
+							 <div ng-message="required">Required</div>
+						 </div>
+					 </md-input-container>
+
 				 </div>
 
+					<br>
 
-				 <a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" ng-click="addOrder()">Next</a>
-				 <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'custom'" >Request A qoute</a>
+				 <!-- comments -->
+					<md-input-container class="md-block">
+							 <label>Comments</label>
+							 <input type="text" name="Comments"  ng-model="orderDetails.comment"/>
+					</md-input-container>
 
-    </div>
-			</form>
 
-		<FORM  ACTION="http://localhost/print-chowk/api/upload.php" METHOD="POST" enctype="multipart/form-data">
-					<input type="file"  name="filename" >
-					<input type="submit" class="btn btn-primary" value="Upload File ">
-		 </FORM>
-			</p>
-		</div>
-	</div>
+
+
+
+				</div>
+
+
+				<!-- <br>
+				<input type="file" file-model="file"/>
+				<button class="btn btn-default" ng-click="uploadFile()">upload me</button> -->
+
+				<br>
+				<md-button class="md-raised md-primary" ng-show="orderDetails.orderType === 'existing'" ng-click="goToPath()" >Next</md-button>
+				<!-- <a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" href="#/dashboard/orderSummary">Next</a> -->
+       <md-button ng-show="orderDetails.orderType === 'custom'" class="md-raised md-primary">Request A qoute</md-button>
+				<!-- <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'custom'" href="#/dashboard/requestSummary">Request A qoute</a> -->
+				<br>
+
+
+			</div>
+		</form>
+
+	</p>
+</div>
+</div>
 </div>

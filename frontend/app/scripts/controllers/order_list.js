@@ -1,55 +1,43 @@
 
 angular.module('yapp')
-  .controller('order_list', function($scope, $state,getobject,$http) {
+  .controller('order_list', function($scope,getDialogData,$state,getobject,$http,$mdDialog,getDialogData) {
+
+ $scope.selected=[];
+
+  $scope.getDataForDialog = function(x) {
+    getDialogData.dialogData=x;
+  };
 
 
-  /*$http.get("http://192.168.5.2/print-chowk/api/getOrder.php")
-        .then(function(response) {
-          $scope.details = response.data;
-        });*/
-    $scope.events =  $http.get('http://192.168.5.2/print-chowk/api/getOrder.php')
-           .then(function successCallback(response) {
+        $http({
+          method:'GET',
+          url:'http://localhost/print-chowk/api/getOrder.php'
+          })
+           .then(function (response) {
+                 $scope.details=response.data;
 
-                console.log(response.data);
-                return response.data;
+
             },
             function errorCallback(response) {
-                alert(response);
+                console.log(response);
             });
 
-console.log($scope.events.$$state);
-	 $scope.orders={
-			records: [
-							{ order_ID:1,
-								product:"red",
-								payment:34,
-								shipping:"test ship",
-								orderDate:"12-20-10",
-								amount:4323,
-								status:"shipped"
 
-			 				},
-								 {
-								  order_ID:2,
-									product:"green",
-									payment:123,
-									shipping:"test ship",
-									orderDate:"12-20-10",
-									amount:423,
-									status:"shipped"
+            $scope.showTabDialog = function(ev) {
+              $mdDialog.show({
+                controller: 'addToPrintListDialog',
+                templateUrl: 'views/dashboard/addToPriceListDialog.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+              })
+                  .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                  }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                  });
+            };
 
-							 },
-							 {
-								  order_ID:3,
-									product:"blue",
-									payment:56,
-									shipping:"test ship",
-									orderDate:"12-20-10",
-									amount:342,
-									status:"shipped"
 
-						 }
-					 ]
-  };
 
  });

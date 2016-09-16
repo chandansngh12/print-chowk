@@ -1,27 +1,37 @@
-<div class="container">
-  <h2>Reorder your items</h2>
-  <p>click on order now to get started</p>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Quote Title</th>
-        <th>Product</th>
-        <th>Quantiy</th>
-				<th>Price</th>
-				<th>Last Modified</th>
-				<th>Action</th>
+<md-toolbar class="md-table-toolbar md-default ">
+  <div class="md-toolbar-tools md-title">
+    <span>Reorder your items</span>
+  </div>
+</md-toolbar>
+
+<!-- exact table from live demo -->
+<md-table-container class="md-whiteframe-1dp">
+  <table md-table md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
+    <thead md-head>
+      <tr md-row>
+        <th md-column >Quote Title</th>
+        <th md-column >Product</th>
+        <th md-column >Quantiy</th>
+        <th md-column >Price</th>
+        <th md-column >Date</th>
+        <th md-column >Last Modified</th>
+        <th md-column >Status</th>
+        <th md-column >Actions</th>
       </tr>
     </thead>
-    <tbody>
-      <tr ng-repeat = "x in orders.records">
-        <td>{{x.qouteTitle}}</td>
-        <td>{{x.product}}</td>
-        <td>{{x.quantity}}</td>
-				<td>{{x.price}}</td>
-        <td>{{x.lastModified}}</td>
-        <td><button type="button" name="button">Order Now</button></td>
-      </tr>
+    <tbody md-body>
+      <tr md-row md-auto-select ng-repeat="x in orders.records" style="text-transform: capitalize;">
 
+				<td md-cell>{{x.qouteTitle}}</td>
+				<td md-cell>{{x.product}}</td>
+				<td md-cell>{{x.quantity}}</td>
+				<td md-cell>{{x.price}}</td>
+				<td md-cell>{{x.date}}</td>
+				<td md-cell>{{x.lastModified}}</td>
+				<td md-cell>{{x.status}}</td>
+        <td md-cell><md-button class="md-raised md-primary" ng-click="showTabDialog($event)">Order Now</md-button></td>
+
+      </tr>
     </tbody>
   </table>
-</div>
+</md-table-container>

@@ -8,6 +8,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -53,6 +55,12 @@
     <script src="../bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="../bower_components/angular-uploadcare/angular-uploadcare.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-file-model/angular-file-model.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+    <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -65,8 +73,17 @@
     <script src="scripts/services/getObject.js"></script>
     <script src="scripts/controllers/order_list.js"></script>
     <script src="scripts/controllers/price_list.js"></script>
-    <script src="scripts/directive/ng-upload.js"></script>
-
+    <script src="scripts/controllers/shipping.js"></script>
+    <script src="scripts/controllers/showQuotes.js"></script>
+    <script src="scripts/directive/ngUpload.js"></script>
+    <script src="scripts/directive/ng-simple-upload.js"></script>
+    <script src="scripts/services/fileUpload.js"></script>
+    <script src="scripts/services/getDialogData.js"></script>
+    <script src="scripts/controllers/requestQoute.js"></script>
+    <script src="scripts/controllers/requestSummary.js"></script>
+    <script src="scripts/controllers/addToPrintListDialog.js"></script>
+    <script src="scripts/controllers/payment.js"></script>
+    <script src="scripts/controllers/fileVault.js"></script>
     <!-- endbuild -->
   </body>
 </html>

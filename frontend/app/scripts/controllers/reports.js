@@ -1,16 +1,22 @@
 
 angular.module('yapp')
-  .controller('reportsCtrl', function($scope, $state,getobject,$http,$location) {
+  .controller('reportsCtrl', function($scope,$state,getobject,$http,$location,fileUpload,$state,localStorageService) {
   $scope.productNames = ["banner", "mugs", "tshirts"];
 	$scope.paper = ["100 GSM Matt Paper", "170 GSM Matt Paper", "250 GSM Matt Paper","300 GSM Matt Paper","Textured Paper"];
   $scope.dimensions =["mm","cm","inch","ft"];
 	$scope.finishArr=["No Lamination","Matt Lamination","Gloss Lamination","Waterproof Lamination"];
   $scope.getcutting=["Leave White Border","End-to-End"];
-   $scope.tab_to=0;
-	 $scope.orderDetails={
+
+
+
+
+if(getobject.isVisited===0){
+	 $scope.orderDetails =
+   {
 		 orderType:"existing",
 		 productType:"paper",
      nonPaperType:"",
+     paperType:"",
 		 productTitle:"",
      productName:"",
 		 quantity:10,
@@ -18,42 +24,60 @@ angular.module('yapp')
 		 heightdim:0,
      widthdim:0,
 		 finish:"",
-     cutting:"",
-     comment:""
+     cutting:"  ",
+     comment:" ",
+     imageUrl:" ",
+     amount:10000,
+     paymentType:"  ",
+     orderStatus:"Processing",
+     city:"New Delhi",
+     state:"Delhi",
+     landmark:"near shiv temple",
+     zipCode:110044
 	 }
 
-   getobject.Product = $scope.orderDetails;
+   localStorageService.set("orderDetails",$scope.orderDetails);
+   getobject.isVisited=1;
+   console.log("hello");
 
-            var formdata = new FormData();
-            $scope.getTheFiles = function ($files) {
-                angular.forEach($files, function (value, key) {
-                    formdata.append(key, value);
-                });
-            };
+    // getobject.Product=$scope.orderDetails;
+}
 
-            // NOW UPLOAD THE FILES.
-            $scope.uploadFiles = function () {
+else{
 
-                var request = {
-                    method: 'POST',
-                    url: '/api/fileupload/',
-                    data: formdata,
-                    headers: {
-                        'Content-Type': undefined
-                    }
-                };
+  $scope.orderDetails = localStorageService.get("orderDetails");
 
-                // SEND THE FILES.
-                $http(request)
-                    .success(function (d) {
-                        alert(d);
-                    })
-                    .error(function () {
-                    });
-            }
+}
+
+//image directive for name
+
+     $scope.uploadFile = function(){
+        var file = $scope.file;
+        $scope.orderDetails.imageUrl=$scope.file.name;
+        console.log('file is ' );
+        console.dir(file);
+        var uploadUrl = "http://localhost/print-chowk/api/upload.php";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
 
 
-    $scope.addOrder = function () {
+    $scope.goToPath = function(){
+      $state.go('orderSummary');
+    }
+
+
+    //
+    // $scope.obj = {
+    //     currentUser: {
+    //       username: "testUN",
+    //       authdata: "authdata"
+    //     }
+    //   };
+    //   $cookies.putObject('cookieName', $scope.obj);
+
+   //image end
+
+  /*$scope.addOrder = function () {
 
     var request = $http({
         method: "post",
@@ -69,13 +93,13 @@ angular.module('yapp')
          widthdim:$scope.orderDetails.widthdim,
          finish:$scope.orderDetails.finish,
          cutting:$scope.orderDetails.cutting,
-         comment:$scope.orderDetails.comment
-         
+         comment:$scope.orderDetails.comment,
+         imageUrl:$scope.orderDetails.imageUrl,
         },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
 
-    /* Check whether the HTTP Request is successful or not. */
+    //Check whether the HTTP Request is successful or not.
     request.success(function (data) {
         if(data=="success"){
         $location.path('/orderSummary');
@@ -83,5 +107,8 @@ angular.module('yapp')
         else console.log(data);
     });
     }
+*/
+
+
 
  });
