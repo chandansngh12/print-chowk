@@ -4,7 +4,7 @@
 /*
 $uploaddir = '/tmp';
 $uploadfile = $uploaddir ."/".$_FILES['name'];
- var_dump($_FILES['filename']);
+ var_dump($_FILES['file']);
 echo '<pre>';
 if (move_uploaded_file($_FILES['name'], "/tmp")) {
     echo "File is valid, and was successfully uploaded.\n";
@@ -19,13 +19,13 @@ print "</pre>";
 */
 
 
- if(isset($_FILES['filename'])){
+ if(isset($_FILES['file'])){
       $errors= array();
-      $file_name = $_FILES['filename']['name'];
-      $file_size =$_FILES['filename']['size'];
-      $file_tmp =$_FILES['filename']['tmp_name'];
-      $file_type=$_FILES['filename']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['filename']['name'])));
+      $file_name = $_FILES['file']['name'];
+      $file_size =$_FILES['file']['size'];
+      $file_tmp =$_FILES['file']['tmp_name'];
+      $file_type=$_FILES['file']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
 
       $expensions= array("html");
 
