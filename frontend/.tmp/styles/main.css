@@ -6546,14 +6546,14 @@ button.close {
 .dashboard-page .sidebar h2 small {
   color: rgba(255, 255, 255, 0.7);
 }
-@media (min-width: 768px) {
+@media (min-width: 68px) {
   .dashboard-page .sidebar {
     position: fixed;
     top: 0px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    display: block;
+    display: inline;
     padding: 0 20px 20px 20px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -6659,6 +6659,17 @@ button.close {
 .overview-tab a:hover {
   color: white;
   text-decoration: none;
+}
+.menu_open {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.vertical-divider {
+  border-top-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  height: 100%;
 }
 .input-underline {
   background: none;

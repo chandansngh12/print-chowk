@@ -4,7 +4,7 @@ include("config.php");
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
-//if ($_SERVER['REQUEST_METHOD'] == 'POST')
+
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
 // username and password sent from form 

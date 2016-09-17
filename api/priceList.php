@@ -1,10 +1,10 @@
 <?php 
-//include("config.php");
-//session_start();
+include("config.php");
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
-    //$_POST = json_decode(file_get_contents('php://input'), true);
+    $_POST = json_decode(file_get_contents('php://input'), true);
 	
 $sql = "INSERT INTO priceList (`orderId`) VALUES (".$_POST['ordersId'].")";
 
