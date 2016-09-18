@@ -1,5 +1,4 @@
 <?php
-
 include("config.php");
 session_start();
 
@@ -25,7 +24,7 @@ if($count==1)
 //session_register("myusername");
 $_SESSION['login_user']=$myusername;
 $_SESSION['login_status']="success";
-	//echo "success";
+
 	echo(json_encode($_SESSION));
 }
 else

@@ -13,7 +13,7 @@ if (isset($_SESSION['login_status']))
       $expensions= array("pdf");
      
       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".mt_rand()."pdf");
+         move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".$file_name."-".mt_rand());
          echo "Success";
        
       }else{
