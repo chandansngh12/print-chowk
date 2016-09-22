@@ -1,10 +1,9 @@
 <?php
-
 include("config.php");
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
-//if ($_SERVER['REQUEST_METHOD'] == 'POST')
+
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
 // username and password sent from form 
@@ -25,7 +24,7 @@ if($count==1)
 //session_register("myusername");
 $_SESSION['login_user']=$myusername;
 $_SESSION['login_status']="success";
-	//echo "success";
+
 	echo(json_encode($_SESSION));
 }
 else

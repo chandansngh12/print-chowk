@@ -231,6 +231,11 @@
 				</div>
 
          <!-- MF -->
+
+				 <br>
+				<input type="file" file-model="file"/>
+				<button class="btn btn-default" ng-click="uploadFile()">upload me</button> 
+
 				<br>
 				<md-button class="md-raised md-primary" ng-show="orderDetails.orderType === 'existing'" ng-disabled="orderForm.$invalid" ng-click="goToPath('orderSummary')" >Next</md-button>
 				<!-- <a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" href="#/dashboard/orderSummary">Next</a> -->
