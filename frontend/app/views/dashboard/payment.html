@@ -10,51 +10,51 @@
     <div class="" layout="row">
 
 
-		<md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-3 ">
+		<md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-1 ">
 			<div class="md-toolbar-tools">
-				<span>Order Details</span>
+				<span><span class="glyphicon glyphicon-shopping-cart"></span> Order Details</span>
 			 </div>
 			 </md-toolbar>
 
 		</div>
-		<div class="" layout="row" layout-xs="column">
-			<div class="" flex style="margin-top:10px;margin-bottom:10px;margin-left:10px;">
-				<img src="images/product.png" alt="" class="img-responsive"/>
+		<div class="" layout="row" layout-padding layout-xs="column">
+			<div class="" flex >
+				<!-- <img src="images/product.png" alt="" class="img-responsive"/> -->
+				<iframe width="100%" height="400px" ng-src="{{trustSrcurl(imagePath)}}" ></iframe>
+
 			</div>
 			<div class="" flex style="margin-left:5px; margin-top:10px;">
-				<table md-table class="paymentTable">
+				<table md-table  class="table table-bordered paymentTable">
 					<thead md-head>
 					<tr>
 						<th md-column>Product</th>
-						<td >Banner</td>
+						<td>{{orderDetails.productTitle}}</td>
 					</tr>
 					<tr>
 						<th md-column>Quantity</th>
-						<td>40</td>
+						<td>{{orderDetails.quantity}}</td>
 					</tr>
 					<tr>
 						<th md-column>Dimension</th>
-						<td >10X20 mm</td>
+						<td >{{orderDetails.heightdim}}X{{orderDetails.widthdim}} {{dimensions}}</td>
 					</tr>
 					<tr>
 						<th md-column>Finish</th>
-						<td >end to end</td>
+						<td>{{orderDetails.finish}}</td>
 					</tr>
 					<tr>
 						<th md-column>Cutting</th>
-						<td >something</td>
+						<td >{{orderDetails.cutting}}</td>
+					</tr>
+					<tr>
+						<th md-column><h3>Total Amount:</h3> </th>
+						<td ><h3><b>₹36000</b></h3></td>
 					</tr>
 					</thead>
 				</table>
-				<md-divider></md-divider>
-				<h4 class="">   Total Amount: ₹36000</h4>
-				<md-divider></md-divider>
-				<h4>Shipping</h4>
-				<span>
-					Street no.25,House no. D-15,<br>
-					New Delhi-110044,<br>
-					India
-				</span>
+
+
+
 			</div>
 
 		</div>
@@ -64,30 +64,54 @@
 
 
   <div class="" flex flex-gt-sm="40">
-   <div class="md-whiteframe-1dp" layout="column" style="background-color:white;">
-		 <md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-3 ">
+		<div class="md-whiteframe-1dp" layout="column"  style="background-color:white;">
+ 		 <md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-1 ">
+  			<div class="md-toolbar-tools">
+  				<span class="glyphicon glyphicon-map-marker"></span><span>&nbspDelivery Information</span>
+  			 </div>
+  			 </md-toolbar>
+
+ 		<div class="" flex layout-padding layout="row">
+			<div class="" flex>
+			<h3>Shipping</h3>
+			<br>Street no.25,House no. D-15,<br>
+			New Delhi-110044,<br>
+			India
+		 </div>
+		 <div class="" flex>
+		 <h3>Billing</h3>
+		 <br>Street no.25,House no. D-15,<br>
+		 New Delhi-110044,<br>
+		 India
+		</div>
+
+
+
+
+     </div>
+  		</div>
+			<!-- toolbar for payment -->
+   <div class="md-whiteframe-1dp" layout="column"  style="background-color:white;">
+		 <md-toolbar class="md-table-toolbar md-whiteframe-1dp md-hue-1 ">
  			<div class="md-toolbar-tools">
- 				<span>Payment Information</span>
+ 				<span class="glyphicon glyphicon-credit-card"></span> <span>&nbspPayment </span>
  			 </div>
  			 </md-toolbar>
-    <div class="" flex>
-      <p>
-      	CREDIT <p class="pull-right">₹36000</p>
-      </p>
-			 <!-- <p > <p> Pay On Account</h2><span class="glyphicon glyphicon-piggy-bank"></span>Credit<span>₹0</span></p> -->
 
-    </div>
-		<div class="" flex layout="column">
-			<label for="">Select Payment type</label>
-			<md-radio-group ng-model="paymentType" class="md-primary">
+		<div class="" flex layout-padding layout="column">
+			<label for=""><h3>Select Payment type</h3></label>
+			<md-radio-group ng-model="orderDetails.paymentType" class="md-primary">
+				<div layout="row">
+				<md-radio-button  value="Pay on Account" class="md-primary">Pay on Account</md-radio-button>
+				<p style="color:red;right:0;">
+					&nbsp&nbspCredit:{{}}
+				</p>
+				</div>
 
-				<md-radio-button value="Apple" class="md-primary">Pay on Account</md-radio-button>
-	      <md-radio-button value="Banana"class="md-primary"> Razor Pay </md-radio-button>
-
-
+	      <md-radio-button value="Razor Pay"class="md-primary">Razor Pay</md-radio-button>
     </md-radio-group>
 
-		<md-button class="md-raised md-primary">Pay Now</md-button>
+		<md-button ng-click="paymentSelect()" class="md-raised md-primary">Pay Now</md-button>
 
     </div>
  		</div>

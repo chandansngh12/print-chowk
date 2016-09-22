@@ -2,7 +2,7 @@
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Add To Your Print List{{dialogData.dialogData.orderId}}</h2>
+        <h2>Add To Your Price List{{dialogData.dialogData.orderId}}</h2>
         <span flex></span>
         <md-button class="md-icon-button" aria-label="Close dialog" ng-click="cancel()">
 
@@ -17,7 +17,7 @@
                 <div layout="row">
                   <md-input-container flex="50">
                     <label>Order Title</label>
-                    <input required name="orderTitle" ng-model="dialogData.orderTitle">
+                    <input required name="orderTitle" ng-model="orderTitle">
                     <div ng-messages="projectForm.orderTitle.$error">
                       <div ng-message="required">This is required.</div>
                     </div>
@@ -47,7 +47,7 @@
                 <div layout="row">
                   <md-input-container flex="50">
                     <label>Order Title</label>
-                    <input required name="orderTitle" ng-model="dialogData.orderTitle">
+                    <input required name="orderTitle" ng-model="orderTitle">
                     <div ng-messages="projectForm.orderTitle.$error">
                       <div ng-message="required">This is required.</div>
                     </div>
@@ -79,10 +79,10 @@
     <md-dialog-actions layout="row">
 
       <span flex></span>
-      <md-button ng-click="answer('not useful')" >
+      <md-button ng-click="addPriceList()" >
         Save
       </md-button>
-      <md-button ng-click="answer('useful')" style="margin-right:20px;" >
+      <md-button ng-click="cancelled()" style="margin-right:20px;" >
         Cancel
       </md-button>
     </md-dialog-actions>

@@ -8,19 +8,41 @@
 				<md-radio-group ng-model="addressType" >
 
 				<div class="col-md-6" >
-					<md-radio-button value="existing"  style="font-size:30px;" >EXISTING ADDRESS</md-radio-button>
-
-						<!-- <button type="button"  class="btn btn-default btn-lg btn-block"></button> -->
-
-						<!-- <label>Dimensions  </label>
-						<md-select  name="dimensions" ng-model="orderDetails.dimensions" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'">
-							<md-option value="{{s}}"  ng-repeat="s in existingAdd">{{s}}</md-option>
-						</md-select> -->
+					<md-radio-button value="existing"  style="font-size:30px;">EXISTING ADDRESS</md-radio-button>
+              <md-content class="demo-content">
+                 <form name="existingForm">
 
 
-						<div layout="row" layout-align="start" flex>
+										<md-radio-group  ng-model="address" >
+
+							<div ng-repeat='address in existingAdd' class="row">
+								<div flex layout='row' layout-padding layout-align="start center" >
+
+
+
+
+
+									<div class="md-whiteframe-1dp" flex>
+
+										 <md-radio-button required ng-value="address" ng-disabled="!(addressType==='existing')">
+										    <h4>name</h4>
+												{{address}}
+												zipCode:110044
+									   </md-radio-button>
+
+									</div>
+
+								</div>
+							</div>
+							</form>
+
+							</md-content>
+						</md-radio-group>
+
+
+						<!-- <div layout="row" layout-align="start" flex>
  								<md-input-container flex>
- 									<label>Select Finish Type</label>
+ 									<label>Select Address</label>
  									<md-select  name="paperType" ng-model="orderDetails.dimensions" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'existing'" >
  										<md-option value="{{s}}"  ng-repeat="s in existingAdd">{{s}}</md-option>
  									</md-select>
@@ -29,63 +51,77 @@
  									</div>
  								</md-input-container>
 
- 	            </div>
-
-
-						      <!-- <md-radio-button value="Mango">Mango</md-radio-button> -->
-
-
-
-						<!-- <select class="form-control" ng-disabled="addressType === 'new_add'" id="finish" ng-disabled="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.finish" ng-options="s for s in existingAdd">
-							<option value="" ng-if="false"></option>
-						</select> -->
-
+ 	            </div> -->
 					</div>
 
-
+        <!-- new address section -->
 				<div class="col-md-6" >
 					<md-radio-button value="new_add"  style="font-size:30px;">NEW ADDRESS</md-radio-button>
 
 
-					<div layout="column" layout-align="start" flex>
-						<form ng-disabled="addressType === 'existing'">
 
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
-								 <label>Name</label>
-								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+					 <md-content flex layout-padding md-scroll-y class="demo-content">
+
+					<div layout="column" layout-align="start" flex>
+
+						<form name="shippingForm">
+            <fieldset ng-disabled="!(addressType === 'new_add')">
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>Full Name</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.name"/>
 						</md-input-container>
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
-								 <label>City</label>
-								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label> Phone no.</label>
+								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="address.phone"/>
 						</md-input-container>
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
-								 <label>State</label>
-								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
-						</md-input-container>
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
-								 <label>Landmark</label>
-								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="orderDetails.widthdim"/>
-						</md-input-container>
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
 								 <label>Zip Code</label>
-								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="address.zipCode"/>
 						</md-input-container>
-						<md-input-container class="md-block" ng-model="orderDetails.Product.city" ng-disabled="addressType === 'existing'">
-								 <label>Country</label>
-								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>Flat/House No.</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.house"/>
 						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>Street/Locality</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.street"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>Landmark</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.landmark"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>Town/City</label>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.city"/>
+						</md-input-container>
+						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
+								 <label>State</label>
+								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="address.state"/>
+						</md-input-container>
+						<div layout="row" layout-align="start" flex>
+ 								<md-input-container flex>
+ 									<label> Address type</label>
+ 									<md-select  name="paperType" ng-model="orderDetails.dimensions" ng-disabled="addressType === 'existing'" ng-required="addressType === 'new_add'" ng-disabled="addressType === 'new_add'" ng-required="addressType === 'new_add'" >
+ 										<md-option value="{{s}}"  ng-repeat="s in addtype">{{s}}</md-option>
+ 									</md-select>
+ 									<div class="errors" ng-messages="myForm.favoriteColor.$error">
+ 										<div ng-message="required">Required</div>
+ 									</div>
+ 								</md-input-container>
+
+ 	            </div>
+           </fieldset>
 
 					</form>
 
 						 </div>
-
-
 				</div>
+       </md-content>
 			</md-radio-group>
 
 			</div>
 			<br>
-     <center><a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="gotoState()" >Proceed To Payment</a></center>
+     <center><md-button class="md-raised md-primary" ng-disabled="shippingForm.$invalid||existingForm.$invalid||addressType ===''" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="gotoState()" >Proceed To Payment</a></md-button>
 		</div>
 
 </div>

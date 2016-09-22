@@ -3,7 +3,7 @@ angular.module('yapp')
   .controller('orderSummary', function($scope,$state,getobject,$sce,$rootScope,localStorageService) {
 
      $scope.orderDetails=localStorageService.get("orderDetails");
-
+   console.log($scope.orderDetails);
     // $cookies.orderCookie
 
   // $scope.obtained =
@@ -15,7 +15,7 @@ angular.module('yapp')
          return $sce.trustAsResourceUrl(data);
      }
 
-		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+"ashna.pdf";
+		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+$scope.orderDetails.imageUrl;
 
     //   $scope.cookieWObject = $cookies.getObject('cookieName');
      //

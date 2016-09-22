@@ -4,34 +4,105 @@
   </div>
 </md-toolbar>
 
+
+
+
+
+
+<md-card style="margin:0px">
+            <md-subheader>Filter by search</md-subheader>
+
+            <md-input-container style="margin:15px;">
+                <label>Search</label>
+                <input type="text" ng-model="filterName">
+            </md-input-container>
+
+            <div ng-hide="true">
+                {{(filteredItems = (details | filter: filterName))}}
+            </div>
+        </md-card>
+  <mdt-table sortable-columns="true" animate-sort-icon="true" mdt-row="{'data': filteredItems,
+                      'table-row-id-key': 'orderId',
+                      'column-keys': ['quoteTitle', 'productTitle', 'qty', 'price', 'date', 'Last Modified', 'status','role']}">
+
 <!-- exact table from live demo -->
-<md-table-container class="md-whiteframe-1dp">
+    <mdt-header-row>
+      <mdt-column align-rule="right">Quote Title</mdt-column>
+      <mdt-column align-rule="right">Product</mdt-column>
+      <mdt-column align-rule="right">Quantiy</mdt-column>
+      <mdt-column align-rule="right">Price</mdt-column>
+      <mdt-column align-rule="right">Date</mdt-column>
+      <mdt-column align-rule="right">Last Modified</mdt-column>
+      <mdt-column align-rule="right">Status</mdt-column>
+        <mdt-column style="text-align:center" >Actions</th>
+      </mdt-column>
+    </mdt-header-row>
+
+
+    <mdt-custom-cell html-content="true" column-key="role">
+            <!-- <span ng-class="{'red': value > 5, 'green': value <= 5}">{{value}}</span> -->
+            <section layout="row">
+             <button  class=" btn btn-success">Order Now </button>
+
+            </section>
+        </mdt-custom-cell>
+
+  </mdt-table>
+
+
+
+
+<!-- exact table from live demo -->
+<!-- <mdt-table sortable-columns="true">
+    <mdt-header-row>
+
+      <mdt-column align-rule="right">Quote Title</mdt-column>
+      <mdt-column align-rule="right">Product</mdt-column>
+      <mdt-column align-rule="right">Quantiy</mdt-column>
+      <mdt-column align-rule="right">Price</mdt-column>
+      <mdt-column align-rule="right">Date</mdt-column>
+      <mdt-column align-rule="right">Last Modified</mdt-column>
+      <mdt-column align-rule="right">Status</mdt-column>
+      <mdt-column >Actions</mdt-column>
+    </mdt-header-row>
+    <mdt-row ng-repeat="x in details">
+      <mdt-cell>{{x.quoteTitle}}</mdt-cell>
+      <mdt-cell>{{x.productTitle}}</mdt-cell>
+      <mdt-cell>{{x.qty}}</mdt-cell>
+      <mdt-cell>{{x.price}}</mdt-cell>
+      <mdt-cell>{{x.date}}</mdt-cell>
+      <mdt-cell>{{x.lastModified}}</mdt-cell>
+      <mdt-cell>{{x.status}}</mdt-cell>
+      <mdt-cell html-content="true"><md-button class="md-raised md-primary">Order Now</md-button></mdt-cell>
+    </mdt-row>
+  </mdt-table> -->
+<!-- <md-table-container class="md-whiteframe-1dp">
   <table md-table md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
     <thead md-head>
       <tr md-row>
-        <th md-column >Quote Title</th>
-        <th md-column >Product</th>
-        <th md-column >Quantiy</th>
-        <th md-column >Price</th>
-        <th md-column >Date</th>
-        <th md-column >Last Modified</th>
-        <th md-column >Status</th>
-        <th md-column >Actions</th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
+        <th md-column ></th>
       </tr>
     </thead>
     <tbody md-body>
-      <tr md-row md-auto-select ng-repeat="x in orders.records" style="text-transform: capitalize;">
+      <tr md-row md-auto-select ng-repeat="x in " style="text-transform: capitalize;">
 
-				<td md-cell>{{x.qouteTitle}}</td>
-				<td md-cell>{{x.product}}</td>
-				<td md-cell>{{x.quantity}}</td>
-				<td md-cell>{{x.price}}</td>
-				<td md-cell>{{x.date}}</td>
-				<td md-cell>{{x.lastModified}}</td>
-				<td md-cell>{{x.status}}</td>
-        <td md-cell><md-button class="md-raised md-primary" ng-click="showTabDialog($event)">Order Now</md-button></td>
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell></td>
+				<td md-cell></td>
+        <td md-cell></td>
 
       </tr>
     </tbody>
   </table>
-</md-table-container>
+</md-table-container> -->

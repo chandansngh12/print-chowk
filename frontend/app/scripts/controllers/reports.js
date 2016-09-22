@@ -6,9 +6,9 @@ angular.module('yapp')
   $scope.dimensions =["mm","cm","inch","ft"];
 	$scope.finishArr=["No Lamination","Matt Lamination","Gloss Lamination","Waterproof Lamination"];
   $scope.getcutting=["Leave White Border","End-to-End"];
-
-
-
+  $scope.upload_file="upload";
+  $scope.isUploaded=0;
+  //$scope.check ='false';
 
 if(getobject.isVisited===0){
 	 $scope.orderDetails =
@@ -17,6 +17,7 @@ if(getobject.isVisited===0){
 		 productType:"paper",
      nonPaperType:"",
      paperType:"",
+     paperTypeOther:"",
 		 productTitle:"",
      productName:"",
 		 quantity:10,
@@ -30,15 +31,9 @@ if(getobject.isVisited===0){
      amount:10000,
      paymentType:"  ",
      orderStatus:"Processing",
-     city:"New Delhi",
-     state:"Delhi",
-     landmark:"near shiv temple",
-     zipCode:110044
+     productTime:"",
 	 }
-
-   localStorageService.set("orderDetails",$scope.orderDetails);
    getobject.isVisited=1;
-   console.log("hello");
 
     // getobject.Product=$scope.orderDetails;
 }
@@ -57,12 +52,21 @@ else{
         console.log('file is ' );
         console.dir(file);
         var uploadUrl = "http://localhost/print-chowk/api/upload.php";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+        console.log(uploadUrl);
+        if(fileUpload.uploadFileToUrl(file, uploadUrl))
+          {
+            console.log("hello");
+          }
+        else {
+          console.log("no");
+        }
+
     };
 
 
-    $scope.goToPath = function(){
-      $state.go('orderSummary');
+    $scope.goToPath = function(path){
+      localStorageService.set("orderDetails",$scope.orderDetails);
+      $state.go(path);
     }
 
 

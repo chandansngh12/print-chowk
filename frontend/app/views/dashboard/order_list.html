@@ -4,36 +4,60 @@
   </div>
 </md-toolbar>
 
+<md-card style="margin:0px">
+            <md-subheader>Filter by search</md-subheader>
+
+            <md-input-container style="margin:15px;">
+                <label>Search</label>
+                <input type="text" ng-model="filterName">
+            </md-input-container>
+
+            <div ng-hide="true">
+                {{(filteredItems = (details | filter: filterName))}}
+            </div>
+        </md-card>
+  <mdt-table sortable-columns="true" animate-sort-icon="true" mdt-row="{'data': filteredItems,
+                      'table-row-id-key': 'orderId',
+                      'column-keys': ['orderId', 'productTitle', 'paymentType', 'city', 'date', 'amount', 'status','role']}">
+
 <!-- exact table from live demo -->
-<md-table-container class="md-whiteframe-1dp">
-  <table md-table  md-row-select md-table md-row-select multiple ng-model="selected" md-progress="promise" >
-    <thead md-head >
-      <tr md-row>
-        <th md-column md-order-by="details.orderId" md-desc>Order ID</th>
-        <th md-column >Product</th>
-        <th md-column >Payment</th>
-        <th md-column >Shipping</th>
-        <th md-column >Date</th>
-        <th md-column >Amount</th>
-        <th md-column >Status</th>
-        <th md-column >Actions</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-auto-select ng-repeat="x in details | orderBy : -orderId" style="text-transform: capitalize;">
+    <mdt-header-row>
+        <mdt-column >Order ID</mdt-column>
+        <mdt-column >Product </mdt-column>
+        <mdt-column >Payment </mdt-column>
+        <mdt-column >Shipping</mdt-column>
+        <mdt-column >Date    </mdt-column>
+        <mdt-column >Amount  </mdt-column>
+        <mdt-column >Status  </mdt-column>
+        <mdt-column style="text-align:center" >Actions</th>
+      </mdt-column>
+    </mdt-header-row>
 
-				<td md-cell>{{x.orderId}}</td>
-				<td md-cell>{{x.productTitle}}</td>
-				<td md-cell>{{x.paymentType}}</td>
-				<td md-cell>{{x.city}},{{x.state}},<br>{{x.landmark}},<br>{{x.zipcode}}</td>
-				<td md-cell>{{x.date}}</td>
-				<td md-cell> ₹{{x.amount}}</td>
-				<td md-cell>{{x.status}}</td>
-        <td md-cell><md-button class="md-raised md-primary" ng-click="getDataForDialog(x);showTabDialog($event)">Add to Price list</md-button></td>
 
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
+    <mdt-custom-cell html-content="true" column-key="role">
+            <!-- <span ng-class="{'red': value > 5, 'green': value <= 5}">{{value}}</span> -->
+            <section layout="row">
+             <button  class=" btn btn-success">Invoive </button>
+             <button  class="btn btn-primary" >Download</button>
+             <button  class="btn btn-warning" >Print</button>
+            </section>
+        </mdt-custom-cell>
+    <!-- <mdt-row ng-repeat="x in details">
 
-<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+				<mdt-cell>{{x.orderId}}     </mdt-cell>
+				<mdt-cell>{{x.productTitle}}</mdt-cell>
+				<mdt-cell>{{x.paymentType}} </mdt-cell>
+				<mdt-cell>{{x.city}},{{x.state}},<br>{{x.landmark}},<br>{{x.zipcode}}</mdt-cell>
+				<mdt-cell>{{x.date}}        </mdt-cell>
+				<mdt-cell> ₹{{x.amount}} </mdt-cell>
+				<mdt-cell>{{x.status}}      </mdt-cell>
+        <mdt-cell html-content="true">
+          <section layout="row">
+           <md-button ng-click="save('0')" class="md-raised md-primary">Invoive </md-button>
+           <md-button ng-click="save('1')" class="md-raised md-primary">Download</md-button>
+           <md-button ng-click="save('2')" class="md-raised md-primary">Print</md-button>
+          </section>
+
+        </mdt-cell>
+    </mdt-row> -->
+  </mdt-table>

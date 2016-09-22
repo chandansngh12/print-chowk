@@ -7,11 +7,34 @@ angular.module('yapp')
 
 												];
 
+$scope.addtype = ["commercial",
+                      "residence",
+                      "office",
+
+                      ];
+  $scope.addressType='';
+
+
 $scope.orderDetails=getobject;
 console.log($scope.orderDetails)
 
+
+$scope.address={
+      name:"",
+      phone:0,
+      zipCode:110032,
+      house:"",
+      street:"",
+      landmark:"",
+      city:"",
+      state:"",
+      addressType:""
+};
+
+
 $scope.gotoState= function () {
   $state.go('payment');
+  
 }
 
 // $scope.addOrder = function () {

@@ -13,19 +13,21 @@ angular
     'ui.router',
     'ngAnimate',
     'ng-uploadcare',
+    'ngMessages',
     'file-model',
     'ngMaterial',
     'ngSimpleUpload',
     'md.data.table',
     'ngCookies',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'mdDataTable'
+
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-    $urlRouterProvider.when('/orderSummary', '/dashboard/orderSummary');
-    $urlRouterProvider.when('/thankYou', '/dashboard/thankYou');
     $urlRouterProvider.otherwise('/login');
+
 
     $stateProvider
       .state('base', {
@@ -67,6 +69,12 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/Price_List.html',
             controller: 'price_list'
+          })
+          .state('orderSuccess', {
+            url: '/orderSuccess',
+            parent: 'dashboard',
+            templateUrl: 'views/dashboard/orderSuccess.html',
+            controller: 'orderSuccess'
           })
 
           .state('showQuotes', {
@@ -113,7 +121,8 @@ angular
           .state('accounts_setting', {
             url: '/accounts_setting',
             parent: 'dashboard',
-            templateUrl: 'views/dashboard/accounts_setting.html'
+            templateUrl: 'views/dashboard/accounts_setting.html',
+            controller: 'account_settings'
           })
           .state('shipping', {
             url: '/shipping',

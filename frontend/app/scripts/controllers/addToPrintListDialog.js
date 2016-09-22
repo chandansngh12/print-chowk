@@ -5,10 +5,38 @@ angular.module('yapp')
 	 $scope.dialogData=getDialogData.dialogData;
    console.log($scope.dialogData);
 
+    $scope.cancelled=function(){
+      $mdDialog.hide();
+    }
+   $scope.orderTitle=" ";
+
+    $scope.addPriceList = function() {
 
 
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
+      var request = $http({
+          method: "post",
+          url:"http://localhost/print-chowk/api/priceList.php",
+          data: {
+           orderId:$scope.dialogData.orderId,
+           orderTitle:$scope.orderTitle,
+           qty:$scope.dialogData.quantity
+          },
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      });
+
+      /* Check whether the HTTP Request is successful or not. */
+      request.success(function (data) {
+          if(data=="success"){
+          $mdDialog.hide();
+          // $location.path('/thankYou');
+        }
+          else console.log(data);
+      });
+      }
+
+
+
+
+
 
  });

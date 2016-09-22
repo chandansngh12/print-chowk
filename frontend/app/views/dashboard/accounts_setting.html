@@ -1,1 +1,131 @@
-accounts_setting
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Account Settings</span>
+  </div>
+</md-toolbar>
+
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Reset Password">
+        <md-content class="md-padding">
+           <h1 class="md-display-2">Reset Your Password</h1>
+            <md-button aria-label="Request Password Change" class="md-raised md-primary">Request Password Change</md-button>
+
+        </md-content>
+      </md-tab>
+      <md-tab label="Address Book">
+        <md-content class="md-padding">
+           <div class="row">
+             <div class="panel panel-default"  ng-repeat="x in addr">
+                   <div class="panel-heading">Address <span class="glyphicon glyphicon-search pull-right"></span></div>
+                   <div class="panel-body">
+                     <h5>
+                       Name: {{x.name}}
+                     </h5>
+                     <h5>City: {{x.city}}&nbsp&nbsp&nbspState: {{x.state}}</h5>
+                     <h5></h5>
+                     <h5>Zipcode: {{x.zipcode}}</h5>
+
+                   </div>
+                   </div>
+
+           </div>
+
+
+
+        </md-content>
+      </md-tab>
+      <md-tab label="Payment Details">
+        <md-content class="md-padding">
+          <!-- <h1 class="md-display-2"></h1> -->
+					<div class="row">
+
+
+
+
+
+	             <div class="col-md-10 col-md-offset-1">
+
+
+	                  <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                     <h3 class="panel-title">Account Details</h3>
+	                   </div>
+
+	                   <div class="panel-body">
+	                     <md-button class="md-warn md-raised md-hue-2">Remaining Paid Limit: ₹{{remainingPaidLimit}}</md-button>
+	                     <md-button class="md-accent md-raised md-hue-1 pull-right" >Remaining invoice amount: ₹{{invoiceAmount}}</md-button>
+	                     <h3>Select Date Range</h3>
+
+                         <div layout="row">
+                           <md-datepicker ng-model="filterDates.startDate" md-placeholder="Date From"></md-datepicker>
+	                         <md-datepicker class="pull-right" ng-model="filterDates.endDate" md-placeholder="Date To"></md-datepicker>
+                           <md-button class="md-raised md-primary"><span class="glyphicon glyphicon-search"></span>Search</md-button>
+
+                         </div>
+
+                           <md-card style="margin:0px">
+                                       <md-subheader>Filter by search <md-button></md-button></md-subheader>
+
+                                       <md-input-container style="margin:15px;">
+                                           <label>Search</label>
+                                           <input type="text" ng-model="filterName">
+                                       </md-input-container>
+
+                                       <div ng-hide="true">
+                                           {{(filteredItems = (details | filter: filterName))}}
+                                       </div>
+                                   </md-card>
+                             <mdt-table sortable-columns="true" animate-sort-icon="true" mdt-row="{'data': filteredItems,
+                                                 'table-row-id-key': 'orderId',
+                                                 'column-keys': ['quoteTitle', 'productTitle', 'qty', 'price', 'date', 'Last Modified', 'status','role']}">
+
+
+                               <mdt-header-row>
+                                 <mdt-column align-rule="right">Sr#</mdt-column>
+                                 <mdt-column align-rule="right">Date</mdt-column>
+                                 <mdt-column align-rule="right">Comments</mdt-column>
+                                 <mdt-column align-rule="right">Outstanding Amount</mdt-column>
+                                 <mdt-column align-rule="right">Paid Amount</mdt-column>
+
+
+
+	               </div>
+	             </div>
+	             </div>
+
+
+
+	         </div>
+
+
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+<!-- <md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Account Settings</span>
+  </div>
+</md-toolbar>
+
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Uploaded Files">
+        <md-content class="md-padding">
+          <h1 class="md-display-2"></h1>
+
+        </md-content>
+      </md-tab>
+      <md-tab label="Print Files">
+        <md-content class="md-padding">
+          <h1 class="md-display-2"> </h1>
+
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div> -->
