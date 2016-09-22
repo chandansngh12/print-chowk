@@ -2,6 +2,8 @@
 include("config.php");
 session_start();
 
+if (isset($_SESSION['login_status']))
+{
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
     print_r($_FILE);
@@ -9,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 	$order = json_decode($_POST["orders"]);
 
 
-$sql = "INSERT INTO qoutes 
+$sql = "INSERT INTO requestQuotes 
 (`orderType`, `productType`, `productTitle`, `productName`, `quantity`,`dimensions`,`heightdim`,`widthdim`,`finish`,`cutting`,`comment`,
 `fileName`,`amount`,`status`,`paperType`,`paymentType`) 
 VALUES ('".$_POST['orderType']."','".$_POST['productType']."','".$_POST['productTitle']."','".$_POST['productName']."','".$_POST['quantity']."',
@@ -25,5 +27,6 @@ if ($result)
 else{
 	echo "failed";
 	}
+}
 }
 ?>
