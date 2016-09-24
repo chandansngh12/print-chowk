@@ -2,10 +2,13 @@
 include("config.php");
 session_start();
 
+if(isset($_SESSION['login_status']));{
+
 $return_arr = array();
 $row_array = array();
 
-$sql="SELECT * FROM orders";
+
+$sql="SELECT * FROM orders where `userId`='".$_SESSION['login_user']."'";
 $result=mysql_query($sql);
 $count=mysql_num_rows($result);
 
@@ -41,5 +44,7 @@ echo json_encode($return_arr);
 else
 {
 	echo("Sorry, no orders found.");
+}
+
 }
 ?>
