@@ -14,9 +14,9 @@ function addCredit($user,$amount){
 	}
 }
 
-//if(isset($_SESSION['login_user'])){
-//	$_POST = json_decode(file_get_contents('php://input'), true);
-//	$user=$_SESSION['login_user'];
+if(isset($_SESSION['login_user'])){
+	$_POST = json_decode(file_get_contents('php://input'), true);
+	$user=$_SESSION['login_user'];
 	$user=$_POST['login_user'];
 	$limit=trim($_POST['amount']);
 	
@@ -24,6 +24,6 @@ function addCredit($user,$amount){
 		addCredit($user,$limit);
 	}
 
-//}
+}
 
 ?>
