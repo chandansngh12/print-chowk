@@ -5,9 +5,6 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
-	$order = json_decode($_POST["orders"]);
-
-
 
 $sql = "select * from requestQuotes where userId='".$_SESSION['login_user']."'";
 
