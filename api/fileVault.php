@@ -6,11 +6,11 @@ if (isset($_SESSION['login_status']))
 {
 $return_arr = array();
 $row_array = array();
-if ($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST))
+if (($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST))
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
    $userId=$_POST['userId'];
-   $sql = "SELECT * FROM fileVault where userId=".$userId;
+   $sql = "SELECT * FROM fileVault where userId='".$userId."'";
 
    $result=mysql_query($sql);
    $count=mysql_num_rows($result);

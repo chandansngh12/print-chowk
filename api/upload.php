@@ -13,9 +13,15 @@ if (isset($_SESSION['login_status']))
       $expensions= array("pdf");
      
       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".$file_name."-".mt_rand());
+         $file_name=date("Y-m-d").$file_name;
+         move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".$file_name);
+         $sql="INSERT INTO fileVault (`fileName`,`userId`) values('".$file_name."'".$_SESSION['login_user']."')";
+         $result=mysql_query($sql);
+         if ($result)
          echo "Success";
-       
+         else{
+            echo mysql_error();
+         }
       }else{
          print_r($errors);
       }

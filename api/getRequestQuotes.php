@@ -6,7 +6,6 @@ if (isset($_SESSION['login_status']))
 {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
-    print_r($_FILE);
     $_POST = json_decode(file_get_contents('php://input'), true);
 
 $sql = "select * from requestQuotes where userId='".$_SESSION['login_user']."'";
@@ -18,7 +17,6 @@ $count=mysql_num_rows($result);
 if($count>1)
 {
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-
     $row_array['orderId'] = $row['orderId'];
     $row_array['orderType'] = $row['orderType'];
     $row_array['productType'] = $row['productType'];
