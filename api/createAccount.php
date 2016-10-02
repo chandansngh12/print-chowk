@@ -20,7 +20,7 @@ $creditAmountStatus=$_POST['creditAmountStatus'];
 $creditAmount=$_POST['creditAmount'];
 
 if ($stmt = $mysqli->prepare("INSERT INTO users (username, passcode,companyname,email,name,contactnumber,alternatenumber) values(?,?,?,?,?,?,?)")) {
- $stmt->bind_param("sssssss",$userName,$passcode,$companyName,$email,$name,$contactNumber,$alternateNumber);
+ $stmt->bind_param("sssssdd",$userName,$passcode,$companyName,$email,$name,$contactNumber,$alternateNumber);
  if($stmt->execute()){
    if($id=$mysqli->prepare("INSERT INTO accountCredit (userId,creditAmount,creditStatus) values (?,?,?)")){
    $id->bind_param("sss",$userName,$creditAmount,$creditAmountStatus);
