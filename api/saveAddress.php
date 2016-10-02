@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
     $address = trim($_POST['address']);
 
     if (isset($address)){
-    	$sql="INSERT INTO saveAddress (`Address`,`userName`) values ('".$address."','".$_SESSION['login_user']."')";
+    	$sql="INSERT INTO address (`Address`,`userName`) values ('".$address."','".$_SESSION['login_user']."')";
     	$result=mysql_query($sql);
 		
 		if($result){
