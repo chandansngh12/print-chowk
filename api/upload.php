@@ -15,7 +15,7 @@ if (isset($_SESSION['login_status']))
       if(empty($errors)==true){
          $file_name=date("Y-m-d").$file_name;
          move_uploaded_file($file_tmp,"/Library/WebServer/Documents/print-chowk/api/uploads/".$file_name);
-         $sql="INSERT INTO fileVault (`fileName`,`userId`) values('".$file_name."'".$_SESSION['login_user']."')";
+         $sql="INSERT INTO filevault (`fileName`,`userId`) values('".$file_name."'".$_SESSION['login_user']."')";
          $result=mysql_query($sql);
          if ($result)
          echo "Success";
