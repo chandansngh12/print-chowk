@@ -8,10 +8,10 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('LoginCtrl', function($scope,$location,$http,$rootScope) {
+  .controller('LoginCtrl', function($scope,$location,$http,$rootScope,$state) {
 
 
-
+$rootScope.isUser=true;
 
 $scope.submit = function () {
 
@@ -31,7 +31,8 @@ var request = $http({
 request.success(function (data) {
     if(data.login_status == "success"){
       console.log(data.login_status);
-    $location.path('/dashboard');}
+      $rootScope.isUser=true;
+      $state.go('overview'); }//$location.path('/dashboard');
     else console.log(data);
 });
 }

@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
 // username and password sent from form 
-$myusername=addslashes($_POST['username']); 
-$mypassword=addslashes($_POST['password']); 
+$myusername=trim($_POST['username']); 
+$mypassword=trim($_POST['password']); 
 
-$sql="SELECT id FROM admin WHERE username='$myusername' and passcode='$mypassword'";
+$sql="SELECT user_id FROM users WHERE username='$myusername' and passcode='$mypassword'";
 $result=mysql_query($sql);
 $row=mysql_fetch_array($result);
 $active=$row['active'];

@@ -1,39 +1,50 @@
 angular.module('yapp')
-  .controller('addToPrintListDialog', function($scope, $state,getobject,$http,$mdDialog,getDialogData) {
+  .controller('addToPrintListDialog', function($scope, $state,getobject,$http,localStorageService,$mdDialog,Upload,$timeout) {
 
-
-	 $scope.dialogData=getDialogData.dialogData;
+$scope.upload_file=null;
+	 $scope.dialogData=getobject.details;
    console.log($scope.dialogData);
+   $scope.isUploaded=false;
+  //  console.log($scope.dialogData);
+
+   $scope.quantity=[100,200,300];
 
     $scope.cancelled=function(){
       $mdDialog.hide();
     }
-   $scope.orderTitle=" ";
-
-    $scope.addPriceList = function() {
 
 
-      var request = $http({
-          method: "post",
-          url:"http://localhost/print-chowk/api/priceList.php",
-          data: {
-           orderId:$scope.dialogData.orderId,
-           orderTitle:$scope.orderTitle,
-           qty:$scope.dialogData.quantity
-          },
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      });
+ $scope.orderNow = function() {
 
-      /* Check whether the HTTP Request is successful or not. */
-      request.success(function (data) {
-          if(data=="success"){
-          $mdDialog.hide();
-          // $location.path('/thankYou');
-        }
-          else console.log(data);
-      });
-      }
+   localStorageService.set("orderDetails",$scope.dialogData);
+   getobject.isVisited=1;
+   $state.go('orderSummary');
+   $mdDialog.hide();
 
+
+ }
+
+
+
+      // UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+
+      $(document).ready(function()
+          {
+            $scope.testme=$("#fileuploader").uploadFile({
+            url:"http://localhost/print-chowk/api/upload_me.php",
+            fileName:"myfile",
+            multiple:false,
+            dragDrop:false,
+            maxFileCount:1,
+            onSuccess:function()
+                  {
+                      $scope.dialogData.fileName=$scope.testme.existingFileNames[0]; //get the file name
+                      $scope.isUploaded=true;
+
+                  },
+            });
+
+          });
 
 
 

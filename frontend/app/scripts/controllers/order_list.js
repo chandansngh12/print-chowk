@@ -1,12 +1,13 @@
 
 angular.module('yapp')
-  .controller('order_list', function($scope,getDialogData,$state,getobject,$http,$mdDialog,getDialogData) {
+  .controller('order_list', function($scope,getDialogData,$state,getobject,$http,$mdDialog,getDialogData,$rootScope) {
 
  $scope.selected=[];
 
-  $scope.getDataForDialog = function(x) {
-    getDialogData.dialogData=x;
-  };
+  // dialog functionality
+  // $scope.getDataForDialog = function(x) {
+  //   getDialogData.dialogData=x;
+  // };
 
 
         $http({
@@ -15,13 +16,17 @@ angular.module('yapp')
           })
            .then(function (response) {
                  $scope.details=response.data;
-
+                 $rootScope.details=response.data;
+                 console.log($scope.details);
 
             },
             function errorCallback(response) {
                 console.log(response);
             });
 
+
+
+            // dialog functionality
 
             $scope.showTabDialog = function(ev) {
               $mdDialog.show({

@@ -4,23 +4,30 @@
 
       <div  class="col-sm-3 col-md-2 sidebar" ng-show = "tab===1">
 
-       <div class="text-center">
-        <h2 class="brand">Print Chowk <small>Your Panel</small></h2>
-        <img src="images/flat-avatar.png" class="user-avatar" /><br />
-        <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
-      </div>
 
+         <p class="brand" layout="row" layout-align="start end"><img class="img-rounded" src="images/user.png" alt="" />&nbsp <b>Hi,User</b></p> <md-divider></md-divider><br><br>
+
+ <div class="text-center">
+        <img class="img-responsive" src="images/flat-avatar.png"  /><br />
+        <md-button ng-click="$state.go('login')" class="md-raised" style="background:white; opacity: 0.7;"><b>Logout</b></md-button>
+        <!-- <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">logout</a> -->
+      </div>
+   <br><br>
       <ul class="nav nav-sidebar">
         <li ng-class="{active: $state.includes('overview')}"><a ui-sref="overview">Home<span class="sr-only">(current)</span></a></li>
         <li ng-class="{active: $state.includes('reports')}"><a ui-sref="reports">Order Now</a></li>
         <li ng-class="{active: $state.includes('price_list')}"><a ui-sref="price_list">Price List</a></li>
         <li ng-class="{active: $state.includes('order_list')}"><a ui-sref="order_list">Order List</a></li>
         <li ng-class="{active: $state.includes('showQuotes')}"><a ui-sref="showQuotes">Quotes</a></li>
-        <li ng-class="{active: $state.includes('request_qoute')}"><a ui-sref="request_qoute">Request A Qoute</a></li>
+        <li ng-class="{active: $state.includes('request_qoute')}"><a ui-sref="request_qoute">Request A Quote</a></li>
         <li ng-class="{active: $state.includes('file_vault')}"><a ui-sref="file_vault">File Vault</a></li>
-        <li ng-class="{active: $state.includes('accounts_setting')}"><a ui-sref="accounts_setting">Account Setiings</a></li>
+        <li ng-class="{active: $state.includes('accounts_setting')}"><a ui-sref="accounts_setting">Account Setings</a></li>
         <li ng-class="{active: $state.includes('printopedia')}"><a ui-sref="printopedia">PrintoPedia</a></li>
       </ul>
+ <br><br><br>
+    <md-button class="md-raised" style="background:#4CAF50;color:white"> <span class="glyphicon glyphicon-send"></span>&nbsp <b>Request a Quote</b></md-button>
+
+      <!-- <md-button class="md-raised md-default" style="background:#FFAB40"><md-icon ></md-icon><b><b></b></b></md-button> -->
 
     </div>
 

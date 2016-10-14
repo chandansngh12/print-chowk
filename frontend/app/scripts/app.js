@@ -19,6 +19,7 @@ angular
     'ngSimpleUpload',
     'md.data.table',
     'ngCookies',
+    'ngFileUpload',
     'LocalStorageModule',
     'mdDataTable'
 
@@ -39,7 +40,8 @@ angular
           url: '/login',
           parent: 'base',
           templateUrl: 'views/login.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+
         })
         .state('payment', {
           url: '/payment',
@@ -52,29 +54,36 @@ angular
           parent: 'base',
           templateUrl: 'views/dashboard.html',
           controller: 'DashboardCtrl'
+          // resolve: { authenticate: authenticate }
+
         })
           .state('overview', {
             url: '/overview',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/overview.html'
+
           })
           .state('orderSummary', {
             url: '/orderSummary',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/orderSummary.html',
             controller: 'orderSummary'
+            // resolve: { authenticate: authenticate }
+
           })
           .state('price_list', {
             url: '/price_list',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/Price_List.html',
             controller: 'price_list'
+
           })
           .state('orderSuccess', {
             url: '/orderSuccess',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/orderSuccess.html',
             controller: 'orderSuccess'
+
           })
 
           .state('showQuotes', {
@@ -82,12 +91,14 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/showQuotes.html',
             controller: 'showQuotes'
+
           })
 
           .state('thankYou', {
             url: '/thankYou',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/thankYou.html'
+
 
           })
 
@@ -96,6 +107,7 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/order_list.html',
             controller: 'order_list'
+
           })
 
           .state('request_qoute', {
@@ -103,12 +115,14 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/request_qoute.html',
             controller: 'requestQoute'
+
           })
           .state('requestSummary', {
             url: '/requestSummary',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/requestSummary.html',
             controller: 'requestSummary'
+
           })
 
           .state('file_vault', {
@@ -116,6 +130,7 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/file_vault.html',
             controller: 'fileVault'
+
           })
 
           .state('accounts_setting', {
@@ -123,6 +138,7 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/accounts_setting.html',
             controller: 'account_settings'
+
           })
           .state('shipping', {
             url: '/shipping',
@@ -130,12 +146,14 @@ angular
             templateUrl: 'views/dashboard/shipping.html',
             controller: 'shippingCtrl'
 
+
           })
 
           .state('printopedia', {
             url: '/printopedia',
             parent: 'dashboard',
             templateUrl: 'views/dashboard/printopedia.html'
+
           })
 
           .state('reports', {
@@ -143,6 +161,27 @@ angular
             parent: 'dashboard',
             templateUrl: 'views/dashboard/reports.html',
             controller: 'reportsCtrl'
+
           });
 
+
+
+
   });
+
+$rootScope.isUser=true;
+  angular.module('yapp')
+      .run(['$rootScope', '$state',
+      function ($rootScope, $state) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+          if (toState.name !== 'login' && !$rootScope.isUser) {
+            event.preventDefault();
+            $state.go('login');
+          }
+        });
+      }]
+    );
+
+    // dbpassword
+      //  printfront
+    // ZzU=O7a+*f7o

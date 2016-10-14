@@ -15,7 +15,8 @@ angular.module('yapp')
          return $sce.trustAsResourceUrl(data);
      }
 
-		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+$scope.orderDetails.imageUrl;
+		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+$scope.orderDetails.fileName;
+     console.log($scope.orderDetails.fileName);
 
     //   $scope.cookieWObject = $cookies.getObject('cookieName');
      //

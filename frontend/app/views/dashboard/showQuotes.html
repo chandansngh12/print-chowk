@@ -7,16 +7,62 @@
 <!-- exact table from live demo -->
 <md-card style="margin:0px">
             <md-subheader>Filter by search</md-subheader>
-
-            <md-input-container style="margin:15px;">
+            <md-divider></md-divider>
+            <!-- <md-input-container style="margin:15px;">
                 <label>Search</label>
                 <input type="text" ng-model="filterName">
-            </md-input-container>
+            </md-input-container> -->
+					<!-- <md-subheader>	<div class="" layout="row" layout-align="start center" layout-padding>
+							<p >Sort by</p>
+							<md-input-container  class="overload" style="margin:15px;">
+	                <label>Search</label>
+	                <input type="text" ng-model="filterName">
+	            </md-input-container>
+						</div>
+						</md-subheader> -->
+						<form class="form-inline overloadForm" layout-padding >
+
+								<div flex class="form-group">
+							    <label for="exampleInputName2">Sort By:</label>
+							    <input type="text" ng-model="filterName" class="form-control"  placeholder=" Search all">
+							  </div>
+								<md-datepicker flex ng-model="myDate" md-placeholder="Order date" ></md-datepicker>
+								<md-datepicker flex ng-model="myDate" md-placeholder="Due date" ></md-datepicker>
+							  <div  style="margin-left:15px;" class="form-group">
+									<div flex class="dropdown">
+										 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Product Type
+										 <span class="caret"></span></button>
+										 <ul class="dropdown-menu">
+											 <li><a ng-click="filterName='Paper'" >Paper</a></li>
+											 <li><a ng-click="filterName='Non Paper'">Non Paper</a></li>
+										 </ul>
+									 </div>
+
+							  </div>
+
+								<div flex class="form-group">
+									<div class="dropdown">
+										 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Status
+										 <span class="caret"></span></button>
+										 <ul class="dropdown-menu">
+											 <li><a ng-click="filterName='Processing'">Processing</a></li>
+											 <li><a ng-click="filterName='Out for Delivery'">Out for Delivery</a></li>
+											 <li><a ng-click="filterName='Delivered'">Delivered</a></li>
+											 <li><a ng-click="filterName='Cancelled'">Cancelled</a></li>
+
+										 </ul>
+									 </div>
+
+							  </div>
+
+							</form>
+						<md-divider></md-divider>
 
             <div ng-hide="true">
                 {{(filteredItems = (details | filter: filterName))}}
             </div>
         </md-card>
+
   <mdt-table sortable-columns="true" animate-sort-icon="true" mdt-row="{'data': filteredItems,
                       'table-row-id-key': 'orderId',
                       'column-keys': ['orderId', 'productTitle', 'paymentType', 'city', 'date', 'amount', 'status','role']}">

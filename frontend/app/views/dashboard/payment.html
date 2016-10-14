@@ -1,11 +1,35 @@
-<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
-<h2 style="text-transform: capitalize"> Payment <small></small></h2>
+<md-toolbar class=" md-default">
+<div class="md-toolbar-tools md-title" style="background:#ecf0f1"layout="row" layout-padding>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+	          <md-icon class="material-icons" style="color: greenyellow;">filter_1</md-icon>
+
+	        </md-button>New Order</span>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+					          <md-icon class="material-icons" style="color: greenyellow;">filter_2</md-icon>
+					        </md-button>Confirm Order</span>
+
+ <span flex style="font-size:25px; background:#336688; "><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+									          <md-icon class="material-icons" style="color: greenyellow;">filter_3</md-icon>
+									        </md-button>Shipping</span>
+<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+												 									          <md-icon class="material-icons" style="color: greenyellow;">filter_4</md-icon>
+												 									        </md-button>Payment</span>
+
+<!-- <span><i class="material-icons">add_shopping_cart</i> New Order</span> -->
+<!-- <span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span> -->
+
+</div>
+</md-toolbar>
+<!-- <a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
+<h2 style="text-transform: capitalize"> Payment <small></small></h2> -->
 <!-- <span class="glyphicon glyphicon-dashboard bg-fade"></span> -->
 <br>
 
 <div class="" layout="row" layout-xs="column">
 
-	<div class="md-whiteframe-1dp " flex flex-gt-sm="60"    style="margin-right:4px;background-color:white;">
+	<div class="md-whiteframe-1dp " flex flex-gt-sm="60" style="margin-right:4px;background-color:white;">
 
     <div class="" layout="row">
 
@@ -24,7 +48,20 @@
 
 			</div>
 			<div class="" flex style="margin-left:5px; margin-top:10px;">
-				<table md-table  class="table table-bordered paymentTable">
+        <ul class="list-unstyled">
+        	<li><h4>Product: {{orderDetails.productTitle}}</h4></li>
+					<li><h4>Quantity: {{orderDetails.quantity}}</h4></li>
+					<li><h4>Dimension: {{orderDetails.heightdim}}X{{orderDetails.widthdim}} {{dimensions}}</h4></li>
+					<li><h4>Finish: {{orderDetails.finish}}</h4></li>
+					<li><h4>Cutting: {{orderDetails.cutting}}</h4></li>
+					<md-divider></md-divider>
+					<li><h3><b>Total Amount: ₹36000</b></h3></li>
+        </ul>
+
+
+        </md-list>
+
+			<!-- <table md-table  class="table table-bordered paymentTable">
 					<thead md-head>
 					<tr>
 						<th md-column>Product</th>
@@ -51,7 +88,7 @@
 						<td ><h3><b>₹36000</b></h3></td>
 					</tr>
 					</thead>
-				</table>
+			</table> -->
 
 
 
@@ -110,8 +147,11 @@
 
 	      <md-radio-button value="Razor Pay"class="md-primary">Razor Pay</md-radio-button>
     </md-radio-group>
-
-		<md-button ng-click="paymentSelect()" class="md-raised md-primary">Pay Now</md-button>
+		<md-divider></md-divider>
+		<div class="" layout="row" layout-align="end center" >
+			<md-button ng-click="$state.go('shipping')" class="md-raised md-primary">Back</md-button>
+  		<md-button ng-click="paymentSelect()" class="md-raised md-primary">Pay Now</md-button>
+		</div>
 
     </div>
  		</div>

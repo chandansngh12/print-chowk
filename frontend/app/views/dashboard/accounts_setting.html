@@ -12,13 +12,17 @@
            <h1 class="md-display-2">Reset Your Password</h1>
             <md-button aria-label="Request Password Change" class="md-raised md-primary">Request Password Change</md-button>
 
+
         </md-content>
       </md-tab>
       <md-tab label="Address Book">
         <md-content class="md-padding">
            <div class="row">
+             <div class="col-md-10 col-md-offset-1">
+
+
              <div class="panel panel-default"  ng-repeat="x in addr">
-                   <div class="panel-heading">Address <span class="glyphicon glyphicon-search pull-right"></span></div>
+                   <div class="panel-heading">Address <md-button class="md-fab md-mini md-primary pull-right "><md-icon  md-svg-icon="images/edit.svg"></md-icon></md-button></div>
                    <div class="panel-body">
                      <h5>
                        Name: {{x.name}}
@@ -31,7 +35,7 @@
                    </div>
 
            </div>
-
+         </div>
 
 
         </md-content>
@@ -85,9 +89,13 @@
                                <mdt-header-row>
                                  <mdt-column align-rule="right">Sr#</mdt-column>
                                  <mdt-column align-rule="right">Date</mdt-column>
-                                 <mdt-column align-rule="right">Comments</mdt-column>
-                                 <mdt-column align-rule="right">Outstanding Amount</mdt-column>
-                                 <mdt-column align-rule="right">Paid Amount</mdt-column>
+                                 <mdt-column align-rule="right">Amount</mdt-column>
+                                 <mdt-column align-rule="right">Mode</mdt-column>
+                                 <mdt-column align-rule="right">Ref No/Cheque No</mdt-column>
+                                 <mdt-column align-rule="right">Invoice No</mdt-column>
+                               </mdt-header-row>
+
+                   </mdt-table>
 
 
 
@@ -102,30 +110,74 @@
 
         </md-content>
       </md-tab>
+
+      <md-tab label="Company Details">
+        <md-content class="md-padding">
+           <div class="" layout="row" layout-align="space-between end">
+             <h1 class="md-display-2">Company Details</h1>
+
+             <md-button class="md-raised md-primary">Request Change</md-button>
+
+           </div>
+           <md-divider></md-divider>
+           <br>
+          <div class="" layout="column">
+           <!-- <div class="" layout="column" layout-padding>
+              <div class="" layout="row">
+
+             <div class="panel panel-default">
+
+
+
+                  <div class="panel-body">
+                    <b>Company Name</b>: Some company <br>
+                    <b>Address</b>: Some address <br>
+                    <b>other fields</b>: Some company <br>
+                  </div>
+                </div>
+                <div>
+                  <md-button class="md-raised md-primary">Request change</md-button>
+
+                </div>
+
+              </div>
+
+
+
+           </div> -->
+           <mdt-table>
+              <mdt-header-row>
+
+                <mdt-column align-rule="left">Company Name</mdt-column>
+                <mdt-column align-rule="left">Company logo</mdt-column>
+                <mdt-column align-rule="left">Default Address</mdt-column>
+                <mdt-column align-rule="left">Payment Credit</mdt-column>
+                <!-- <mdt-column align-rule="right">Protein (g)</mdt-column>
+                <mdt-column align-rule="right">Sodium (mg)</mdt-column>
+                <mdt-column align-rule="right">Calcium (%)</mdt-column>
+                <mdt-column align-rule="right">Iron (%)</mdt-column> -->
+              </mdt-header-row>
+              <mdt-row >
+                <mdt-cell>Some Company</mdt-cell>
+
+                <mdt-cell html-content="true">
+                  <img src="images/product.jpeg" class="img-responsive img-thumbnail" alt="" />
+                </mdt-cell>
+                <mdt-cell>Some place</mdt-cell>
+                <mdt-cell>30000</mdt-cell>
+                <!-- <mdt-cell>{{nutrition.protein}}</mdt-cell>
+                <mdt-cell>{{nutrition.sodium}}</mdt-cell>
+                <mdt-cell>{{nutrition.calcium}}</mdt-cell>
+                <mdt-cell>{{nutrition.iron}}</mdt-cell> -->
+              </mdt-row>
+          </mdt-table>
+
+           </div>
+
+
+
+        </md-content>
+      </md-tab>
     </md-tabs>
   </md-content>
 </div>
-<!-- <md-toolbar class="md-table-toolbar md-default">
-  <div class="md-toolbar-tools">
-    <span>Account Settings</span>
-  </div>
-</md-toolbar>
-
-<div ng-cloak>
-  <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="Uploaded Files">
-        <md-content class="md-padding">
-          <h1 class="md-display-2"></h1>
-
-        </md-content>
-      </md-tab>
-      <md-tab label="Print Files">
-        <md-content class="md-padding">
-          <h1 class="md-display-2"> </h1>
-
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div> -->

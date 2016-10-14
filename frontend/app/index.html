@@ -5,21 +5,19 @@
     <title>Print chowk Dashboard </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.css" />
     <link rel="stylesheet" href="../bower_components/angular-material-icons/angular-material-icons.css" />
     <link rel="stylesheet" href="../bower_components/md-data-table/dist/md-data-table-style.css" />
-    <link rel="stylesheet" href="styles/styles.css">
-    
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <!-- <link rel="stylesheet" href="styles/styles.css"> -->
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script> -->
+    <link rel="stylesheet" href="styles/styles.css">
     <!-- endbuild -->
   </head>
   <body ng-app="yapp">
@@ -49,10 +47,12 @@
     <script src="../bower_components/json3/lib/json3.js"></script>
     <![endif]-->
     <!-- endbuild -->
+    <script src="scripts/services/jquery-3.1.0.js"></script>
+    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/jquery-3.1.0.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="../bower_components/ui-router/release/angular-ui-router.js"></script>
@@ -77,6 +77,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/orderSummary.js"></script>

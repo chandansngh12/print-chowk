@@ -3,14 +3,58 @@
     <span>Review Your Orders Here</span>
   </div>
 </md-toolbar>
-
 <md-card style="margin:0px">
             <md-subheader>Filter by search</md-subheader>
-
-            <md-input-container style="margin:15px;">
+            <md-divider></md-divider>
+            <!-- <md-input-container style="margin:15px;">
                 <label>Search</label>
                 <input type="text" ng-model="filterName">
-            </md-input-container>
+            </md-input-container> -->
+					<!-- <md-subheader>	<div class="" layout="row" layout-align="start center" layout-padding>
+							<p >Sort by</p>
+							<md-input-container  class="overload" style="margin:15px;">
+	                <label>Search</label>
+	                <input type="text" ng-model="filterName">
+	            </md-input-container>
+						</div>
+						</md-subheader> -->
+						<form class="form-inline overloadForm" layout-padding >
+
+								<div flex class="form-group">
+							    <label for="exampleInputName2">Sort By:</label>
+							    <input type="text" ng-model="filterName" class="form-control"  placeholder=" Search all">
+							  </div>
+								<md-datepicker flex ng-model="myDate" md-placeholder="Order date" ></md-datepicker>
+								<md-datepicker flex ng-model="myDate" md-placeholder="Due date" ></md-datepicker>
+							  <div  style="margin-left:15px;" class="form-group">
+									<div flex class="dropdown">
+										 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Product Type
+										 <span class="caret"></span></button>
+										 <ul class="dropdown-menu">
+											 <li><a ng-click="filterName='Paper'" >Paper</a></li>
+											 <li><a ng-click="filterName='Non Paper'">Non Paper</a></li>
+										 </ul>
+									 </div>
+
+							  </div>
+
+								<div flex class="form-group">
+									<div class="dropdown">
+										 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Status
+										 <span class="caret"></span></button>
+										 <ul class="dropdown-menu">
+											 <li><a ng-click="filterName='Processing'">Processing</a></li>
+											 <li><a ng-click="filterName='Out for Delivery'">Out for Delivery</a></li>
+											 <li><a ng-click="filterName='Delivered'">Delivered</a></li>
+											 <li><a ng-click="filterName='Cancelled'">Cancelled</a></li>
+
+										 </ul>
+									 </div>
+
+							  </div>
+
+							</form>
+						<md-divider></md-divider>
 
             <div ng-hide="true">
                 {{(filteredItems = (details | filter: filterName))}}
@@ -18,46 +62,44 @@
         </md-card>
   <mdt-table sortable-columns="true" animate-sort-icon="true" mdt-row="{'data': filteredItems,
                       'table-row-id-key': 'orderId',
-                      'column-keys': ['orderId', 'productTitle', 'paymentType', 'city', 'date', 'amount', 'status','role']}">
+                      'column-keys': ['orderId', 'productTitl', 'paymentType', 'productTitle', 'city', 'quantity', 'amount','status','role']}">
 
 <!-- exact table from live demo -->
-    <mdt-header-row>
-        <mdt-column >Order ID</mdt-column>
-        <mdt-column >Product </mdt-column>
-        <mdt-column >Payment </mdt-column>
-        <mdt-column >Shipping</mdt-column>
-        <mdt-column >Date    </mdt-column>
-        <mdt-column >Amount  </mdt-column>
-        <mdt-column >Status  </mdt-column>
-        <mdt-column style="text-align:center" >Actions</th>
+    <mdt-header-row class="overloadColumn">
+        <mdt-column align-rule="left" >Order ID</mdt-column>
+        <mdt-column >Date</mdt-column>
+        <mdt-column >Product Image </mdt-column>
+        <mdt-column >Product Type</mdt-column>
+        <mdt-column >Product Info</mdt-column>
+        <mdt-column align-rule="right">Quantity</mdt-column>
+        <mdt-column align-rule="right">Amount</mdt-column>
+        <mdt-column >Status</mdt-column>
+        <mdt-column >Actions</th>
       </mdt-column>
     </mdt-header-row>
 
+       <mdt-custom-cell html-content="true" column-key="paymentType">
+            <img src="images/product.jpeg" class="img-responsive img-thumbnail" alt="" />
+        </mdt-custom-cell>
 
     <mdt-custom-cell html-content="true" column-key="role">
             <!-- <span ng-class="{'red': value > 5, 'green': value <= 5}">{{value}}</span> -->
-            <section layout="row">
-             <button  class=" btn btn-success">Invoive </button>
+            <!-- <section layout="row">
+             <button  class=" btn btn-success">Invoice </button>
              <button  class="btn btn-primary" >Download</button>
              <button  class="btn btn-warning" >Print</button>
-            </section>
+            </section> -->
+            <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a ui-sref="dsad">Invoice</a></li>
+              <li><a href="#">Download file</a></li>
+              <li><a href="#">Print file</a></li>
+            </ul>
+          </div>
         </mdt-custom-cell>
-    <!-- <mdt-row ng-repeat="x in details">
 
-				<mdt-cell>{{x.orderId}}     </mdt-cell>
-				<mdt-cell>{{x.productTitle}}</mdt-cell>
-				<mdt-cell>{{x.paymentType}} </mdt-cell>
-				<mdt-cell>{{x.city}},{{x.state}},<br>{{x.landmark}},<br>{{x.zipcode}}</mdt-cell>
-				<mdt-cell>{{x.date}}        </mdt-cell>
-				<mdt-cell> ₹{{x.amount}} </mdt-cell>
-				<mdt-cell>{{x.status}}      </mdt-cell>
-        <mdt-cell html-content="true">
-          <section layout="row">
-           <md-button ng-click="save('0')" class="md-raised md-primary">Invoive </md-button>
-           <md-button ng-click="save('1')" class="md-raised md-primary">Download</md-button>
-           <md-button ng-click="save('2')" class="md-raised md-primary">Print</md-button>
-          </section>
 
-        </mdt-cell>
-    </mdt-row> -->
+
   </mdt-table>

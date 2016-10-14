@@ -1,79 +1,95 @@
-<div>
-	<!-- <a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Back</a> -->
-	<h2>Order Confirmation <small>  </small></h2>
-	<span class="glyphicon glyphicon-repeat bg-fade"></span>
-	<div class="jumbotron">
-		<div class="container">
+<md-toolbar class=" md-default">
+<div class="md-toolbar-tools md-title" style="background:#ecf0f1"layout="row" layout-padding>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+	          <md-icon class="material-icons" style="color: greenyellow;">filter_1</md-icon>
+
+	        </md-button>New Order</span>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+					          <md-icon class="material-icons" style="color: greenyellow;">filter_2</md-icon>
+					        </md-button>Confirm Order</span>
+
+ <span flex style="font-size:25px; background:#C0C0C0; "><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+									          <md-icon class="material-icons" style="color: greenyellow;">filter_3</md-icon>
+									        </md-button>Shipping</span>
+<span flex style="font-size:25px; background:#C0C0C0;"><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+												 									          <md-icon class="material-icons" style="color: greenyellow;">filter_4</md-icon>
+												 									        </md-button>Payment</span>
+
+
+
+</div>
+</md-toolbar>
+<br>
+
+
 			<div class="row">
 				<div class="col-md-6">
-					<!-- <div class="panel panel-default"> -->
-							  <!-- <div class="panel-heading md-whiteframe-2dp"> -->
-									<table md-table  class="table table-bordered table-responsive  table-condensed paymentTable">
-										<thead md-head>
+            <md-content>
+               <div class="md-whiteframe-2dp" layout="column">
+                  <md-list layout-padding>
+                  	<md-list-item class="">
+                  		<h4>Product Type: {{orderDetails.productType}}</h4>
+                  	</md-list-item>
 
-										<tr>
-											<th md-column><h4>Product Type:</h4></th>
-											<td><h4>{{orderDetails.productType}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Product Title</h4></th>
-											<td ><h4>{{orderDetails.productTitle}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Product Name:</h4></th>
-											<td ><h4>{{orderDetails.productName}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Paper Type:</h4></th>
-											<td ><h4>{{orderDetails.paperType}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Quantity </h4></th>
-											<td ><h4>{{orderDetails.quantity}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Dimension </h4></th>
-											<td ><h4>{{orderDetails.dimensions}} {{orderDetails.heightdim}}X{{orderDetails.widthdim}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Finish</h4> </th>
-											<td ><h4>{{orderDetails.finish}}</h4></td>
-										</tr></h4>
-										<tr>
-											<th md-column><h4>Cutting</h4></th>
-											<td ><h4>{{orderDetails.cutting}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h4>Special Instruction </h4></th>
-											<td ><h4>{{orderDetails.comment}}</h4></td>
-										</tr>
-										<tr>
-											<th md-column><h3><b>Price per piece: </b></h3></th>
-											<td ><h3><b>Rs.450</b></h3></td>
-										</tr>
-										<tr>
-											<th md-column><h3>Total amount</h3> </th>
-											<td ><h3>Rs.4500</h3></td>
-										</tr>
-										</thead>
-									</table>
+									<md-list-item class=" ">
+										<h4>Product Title: {{orderDetails.productTitle}}</h4>
+									</md-list-item>
 
-				</div>
-
-				<div class="col-md-6 wrapper">
+									<md-list-item class="">
+										<h4>Paper Type: {{orderDetails.paperType}}</h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4>Quantity: {{orderDetails.quantity}}</h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4>Dimension: </h4></th>
+										<td ><h4>{{orderDetails.dimensions}} {{orderDetails.heightdim}}X{{orderDetails.widthdim}}</h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4>Finish: {{orderDetails.finish}}</h4>
+									</md-list-item><md-list-item class="">
+										<h4>Sides: {{orderDetails.side}}</h4>
+									</md-list-item><md-list-item class="">
+										<h4>Cutting: {{orderDetails.cutting}}</h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4>Special Instruction: {{orderDetails.comment}}</h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4><b>Price per piece: </b>: <b>Rs.450</b></h4>
+									</md-list-item>
+									<md-list-item class="">
+										<h4><b>Total Amount </b>: <b>Rs.4503</b></h4>
+									</md-list-item>
+								</md-list>
+               </div>
 
 
 
-				 <iframe width="100%" height="565px" ng-src="{{trustSrcurl(imagePath)}}" ></iframe>
+
+            </md-content>
 
 
 				</div>
-			</div>
-     <center>
-			 <a  ui-sref="reports" class="btn btn-primary btn-lg btn-outline btn-rounded">Back</a>
 
-			 <a  ui-sref="shipping" class="btn btn-primary btn-lg btn-outline btn-rounded">Next</a>
-		  </center>
+				<div class="col-md-6 ">
+
+
+					<div class="embed-responsive embed-responsive-4by3">
+					   <iframe width="100%" class="embed-responsive-item" ng-src="{{trustSrcurl(imagePath)}}"></iframe>
+					 </div>
+				 <!-- <iframe width="100%" height="565px"  ></iframe> -->
+				 <br>
+
+		<div class="" layout="row" layout-align="end center">
+
+
+        <md-button ng-click="$state.go('reports')" class="md-raised md-primary"><span class="glyphicon glyphicon-chevron-left"></span>Back</md-button>
+				<md-button ng-click="$state.go('shipping')" class="md-raised md-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></md-button>
+				</div>
+
 		</div>
+			</div>
+    
+
 	</div>
-</div>

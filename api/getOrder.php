@@ -2,7 +2,7 @@
 include("config.php");
 session_start();
 
-if(isset($_SESSION['login_status']));{
+if(isset($_SESSION['login_status'])){
 
 $return_arr = array();
 $row_array = array();
@@ -13,7 +13,7 @@ $result=mysql_query($sql);
 $count=mysql_num_rows($result);
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-if($count>1)
+if($count>=1)
 {
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 

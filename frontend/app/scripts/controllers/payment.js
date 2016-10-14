@@ -3,7 +3,7 @@ angular.module('yapp')
   .controller('payment', function($scope, $state,getobject,$sce,localStorageService) {
 
      $scope.orderDetails=localStorageService.get("orderDetails")
-
+    
 		 console.log($scope.orderDetails);
 
      $scope.trustSrcurl = function(data)
@@ -11,10 +11,10 @@ angular.module('yapp')
          return $sce.trustAsResourceUrl(data);
      }
 
-		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+$scope.orderDetails.imageUrl;
+		 $scope.imagePath="http://localhost/print-chowk/api/uploads/"+$scope.orderDetails.fileName;
 
 
-     var paymentSelect = function(){
+      $scope.paymentSelect = function(){
 
        if($scope.orderDetails.paymentType==="Pay on Account"){
 
@@ -24,9 +24,8 @@ angular.module('yapp')
        else
 
        if($scope.orderDetails.paymentType==="Razor Pay"){
-          console.log("hello");
          $scope.options = {
-          'key': '<Your-Key-Here>',
+          'key': '8uxuOVtbnr3jHsutB13vyjDL',
           // Insert the amount here, dynamically, even
           'amount': '50000',
           'name': '',

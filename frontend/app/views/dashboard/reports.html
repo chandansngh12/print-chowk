@@ -1,253 +1,295 @@
-<div>
-	<a ui-sref="overview" class="pull-right btn btn-primary btn-outline btn-rounded">Back to Overview</a>
-	<h2 style="text-transform: capitalize"> New Order <small>Get Set Print</small></h2>
-	<span class="glyphicon glyphicon-dashboard bg-fade"></span>
-	<div class="jumbotron md-whiteframe-1dp">
-		<div class="container">
-			<form name="orderForm">
+<md-toolbar class=" md-default">
+<div class="md-toolbar-tools md-title" style="background:#ecf0f1"layout="row" layout-padding>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+	          <md-icon class="material-icons" style="color: greenyellow;">filter_1</md-icon>
 
-          <div class="row">
-           <div class="col-md-3">
-         <!-- file upload and file vault selection -->
-           <h3>
-						 <md-tooltip md-direction="right">
-                    <!-- comments here -->
-            </md-tooltip>
-					Artwork: </h3>
-           </div>
-						<div class="col-md-4">
-							<br>
-							<md-radio-group ng-model="upload_file" layout="row" class="">
-	 	 					<md-radio-button value="upload" class="md-primary">Upload</md-radio-button>
-	 						<span><b>OR</b> &nbsp &nbsp</span>
-	 	 					<md-radio-button value="choose" >select from files</md-radio-button>
-	 	 				</md-radio-group>
-						<div class="col-md-4">
-								<br> <br>
-								<div ng-hide="upload_file==='choose' " class="">
-									<input  type="file" file-model="file" required/>
-								 <md-button class="md-raised md-primary" ng-click="uploadFile()">upload me</md-button>
-								</div>
-								<div ng-hide="upload_file==='upload'" class="">
+	        </md-button>New Order</span>
+	<span flex style="font-size:25px; background:#C0C0C0;"><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+					          <md-icon class="material-icons" style="color: greenyellow;">filter_2</md-icon>
+					        </md-button>Confirm Order</span>
 
-									<md-input-container flex>
+ <span flex style="font-size:25px; background:#C0C0C0; "><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+									          <md-icon class="material-icons" style="color: greenyellow;">filter_3</md-icon>
+									        </md-button>Shipping</span>
+<span flex style="font-size:25px; background:#C0C0C0;"><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+												 									          <md-icon class="material-icons" style="color: greenyellow;">filter_4</md-icon>
+												 									        </md-button>Payment</span>
 
-										<label>Select file</label>
-										<md-select  name="selectProduct" ng-model="orderDetails.imageUrl" ng-disabled="orderDetails.orderType === 'custom'"  	ng-required="upload_file==='choose'">
-											<md-option value="{{s}}"  ng-repeat=" s in productNames" >{{s}}</md-option>
-										</md-select>
-										<div class="errors" ng-messages="myForm.favoriteColor.$error">
-											<div ng-message="required">Required</div>
-										</div>
-									</md-input-container>
-								</div>
-						</div>
-						</div>
-				</div>
+<!-- <span><i class="material-icons">add_shopping_cart</i> New Order</span> -->
+<!-- <span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span> -->
 
+</div>
+</md-toolbar>
 
-	 		 <br>
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<md-content class="md-whiteframe-2dp">
+      <div class="" layout-padding>
+				<md-radio-group ng-model="orderDetails.orderType" layout="row" layout-align="space-around center">
 
-				<md-radio-group ng-model="orderDetails.orderType" layout="row">
-
+					<span style="font-size:20px"><md-tooltip md-direction="bottom">
+          Change
+        </md-tooltip>Select Product</span>
 					<md-radio-button value="existing" class="md-primary"><h4>Existing</h4></md-radio-button>
 					<md-radio-button value="custom" > <h4>Custom Order</h4> </md-radio-button>
 
 
 				</md-radio-group>
+      </div>
 
+		</md-content>
+ <br>
+				<md-content ng-show="orderDetails.productName||orderDetails.orderType==='custom'" class="md-whiteframe-2dp">
+		      <div class="" layout-padding>
+						<md-radio-group ng-model="orderDetails.productType" layout="row" layout-align="space-around center">
 
-				<div><br>
-
-
-						<!-- select product -->
-						<div layout="row" layout-align="start" flex>
-
-
-							<md-input-container flex>
-						  	<label>
-								 <md-tooltip md-direction="bottom">
-									 select the product that have been saved in your price list.
-								 </md-tooltip>
-								Select Product</label>
-								<md-select  name="selectProduct" ng-model="orderDetails.productName" ng-disabled="orderDetails.orderType === 'custom'"  	ng-required="orderDetails.orderType === 'existing'">
-									<md-option value="{{s}}"  ng-repeat=" s in productNames" >{{s}}</md-option>
-								</md-select>
-								<!-- <div class="errors" ng-messages="myForm.favoriteColor.$error">
-									<div ng-message="required">Required</div>
-								</div> -->
-							</md-input-container>
-						</div>
-
-
-						<md-radio-group ng-model="orderDetails.productType" layout="row">
+							<span style="font-size:20px">Product type</span>
 							<md-radio-button value="paper" class="md-primary"><h4>Paper</h4></md-radio-button>
 							<md-radio-button value="nonPaper"><h4>nonPaper</h4></md-radio-button>
 						</md-radio-group>
+						<md-radio-group  layout="row">
 
-						<!-- nonPaper Type -->
-						<md-input-container class="md-block"  >
-					    <label><md-tooltip ng-hide="orderDetails.productType ==='paper'" md-direction="bottom">
-								Enter the non paper type you want your printing on
-							</md-tooltip>Non-Paper Type</label>
-					    <input  type="text" name="nonPaperType" ng-disabled="orderDetails.productType ==='paper'" ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
-					  </md-input-container>
-						<!-- <md-input-container class="md-block" ng-show="orderDetails.productType === 'nonPaper'" >
-								 <label>Non-Paper Type</label>
-								 <input  type="text" name="nonPaperType"  ng-required="orderDetails.productType === 'nonPaper'" ng-model="orderDetails.nonPaperType"/>
-						</md-input-container> -->
+						</md-radio-group>
+		      </div>
 
-						<!-- product Title  -->
-						<md-input-container class="md-block">
-								 <label>Product Title</label>
-								 <input required type="text" name="productTitle" ng-model="orderDetails.productTitle"/>
+					<div class="" layout-padding layout="column">
+						<form name="productDetailsForm">
+							<div ng-hide="orderDetails.productType==='paper'">
+						<md-input-container  class="md-block" style="margin:2px 0px  !important;">
+								 <label>
+									 <md-tooltip  md-direction="bottom">
+										change
+									</md-tooltip>Non Paper Type</label>
+								 <input ng-required="orderDetails.productType==='nonPaper'" type="text" name="productTitle" ng-model="orderDetails.nonPaperType"/>
 						</md-input-container>
-
-						<!-- quantity -->
-						<md-input-container class="md-block">
-								 <label>Quantity</label>
-								 <input required type="number" name="Quantity"  ng-model="orderDetails.quantity"/>
-						</md-input-container>
-
-			    <!-- paper type -->
-
-					<div layout="row"  layout-align="start" flex>
-							<md-input-container flex>
-								<label>Select Paper type</label>
-							<md-select name="paperType" ng-model="orderDetails.paperType" ng-disabled="(orderDetails.productType ==='nonPaper')||(check)"  ng-required='orderDetails.productType==="paper"&&!check'>
-									<md-option value="{{s}}"  ng-repeat="s in paper">{{s}}</md-option>
-									<md-option value="other">Other</md-option>
-								</md-select>
-								<div class="errors" ng-messages="myForm.favoriteColor.$error">
-									<div ng-message="required">Required</div>
-								</div>
-							</md-input-container>
-            </div>
-
-						<md-input-container  ng-show="orderDetails.paperType ==='other'" class="md-block">
-								 <label>Enter</label>
-								 <input ng-disabled="check"  required type="text" name="Height"  ng-model="orderDetails.paperTypeOther"/><br>
-						</md-input-container>
-            <md-checkbox ng-model="check" ng-disabled="orderDetails.productType ==='nonPaper'" ng-click="orderDetails.paperType ='need help'" aria-label="Checkbox 1">need help</md-checkbox>
-
-						<!-- add other paperType -->
-
-					<br><br>
-						<!-- dimensions -->
-							<div layout="row" layout-align="start" flex>
-								<md-input-container class="md-block">
-										 <label>Height</label>
-										 <input required type="number" name="Height"  ng-model="orderDetails.heightdim"/>
-								</md-input-container>
-								<div layout="row" layout-align="start" flex>
-									<md-input-container class="md-block">
-											 <label>Width</label>
-											 <input required type="number" name="Width"  ng-model="orderDetails.widthdim"/>
-									</md-input-container>
-
-						<md-input-container flex>
-							<label>Dimensions  </label>
-							<md-select  name="dimensions" ng-model="orderDetails.dimensions"  required>
-								<md-option value="{{s}}"  ng-repeat="s in dimensions">{{s}}</md-option>
-							</md-select>
-							<div class="errors" ng-messages="myForm.favoriteColor.$error">
-								<div ng-message="required">Required</div>
-							</div>
-						</md-input-container>
-
-
-							</div>
 						</div>
+					<md-input-container class="md-block" style="margin:2px 0px 0px !important;">
+							 <label>
+								 <md-tooltip  md-direction="bottom">
+									change
+								</md-tooltip>Product Title</label>
+							 <input required type="text" name="productTitle" ng-model="orderDetails.productTitle"/>
+					</md-input-container>
+
+      <div ng-show="orderDetails.productType==='paper'" layout="column" layout-padding>
 
 
-						<br>
-						<!-- finish -->
-						<div layout="row" layout-align="start" flex>
-								<md-input-container flex>
-									<label>Select Finish Type</label>
-									<md-select ng-disabled="(orderDetails.productType ==='nonPaper')||(checkFin)" name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.productType ==='nonPaper'"  ng-required="orderDetails.productType === 'paper'&&!checkFin">
-										<md-option value="{{s}}"  ng-repeat="s in finishArr">{{s}}</md-option>
-									</md-select>
-									<div class="errors" ng-messages="myForm.favoriteColor.$error">
-										<div ng-message="required">Required</div>
-									</div>
-								</md-input-container>
 
+					<span style="font-size:20px"><b>Paper Type</b></span>
 
-	            </div>
-							<div layout="row" layout-align="start" flex>
-									<md-input-container flex>
-										<label>Sides</label>
-										<md-select ng-disabled="(orderDetails.productType ==='nonPaper')||(checkFin)" name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.productType ==='nonPaper'"  ng-required="orderDetails.productType === 'paper'&&!checkFin">
-											<md-option value="{{s}}"  ng-repeat="s in finishArr">{{s}}</md-option>
-										</md-select>
-										<div class="errors" ng-messages="myForm.favoriteColor.$error">
-										</div>
-									</md-input-container>
-
-		            </div>
-								<md-checkbox ng-model="checkFin" ng-disabled="orderDetails.productType ==='nonPaper'" ng-click="orderDetails.finish='need help'" aria-label="Checkbox 1">need help</md-checkbox>
-
-
-							<!-- one side option and need help -->
-
-
-						<br>
-       <!-- cutting -->
-			 <div layout="row" layout-align="start" flex>
-					 <md-input-container flex>
-						 <label>Select Cutting Type</label>
-						 <md-select  name="cutting" ng-model="orderDetails.cutting"  ng-disabled="orderDetails.productType ==='nonPaper'" ng-required="orderDetails.productType === 'paper'">
-							 <md-option value="{{s}}"  ng-repeat="s in getcutting">{{s}}</md-option>
-						 </md-select>
-						 <div class="errors" ng-messages="orderForm.cutting.$error">
-							 <div ng-message="required">Required</div>
-						 </div>
-					 </md-input-container>
-
-				 </div>
-					<br>
-					<div layout="row" layout-align="start" flex>
-							<md-input-container flex >
-								<label>I need this product in</label>
-								<md-select  name="deliveryTime" ng-model="orderDetails.productTime" ng-show="orderDetails.orderType === 'custom'" ng-model="orderDetails.deliveryTime"  >
-									<md-option value="5 Days">5 Days</md-option>
-									<md-option value="10 Days">10 Days</md-option>
-									<md-option value="Next Month">Next Month</md-option>
-							</md-input-container>
-
+					<div class="" layout="row">
+					<md-input-container flex style="margin:10px 0px 0px !important;">
+						<label>
+							<md-tooltip  md-direction="top">
+							 change
+						 </md-tooltip>Select Paper type</label>
+					<md-select name="paperType" ng-model="orderDetails.paperType" ng-disabled="(orderDetails.productType ==='nonPaper')||(check)"  ng-required='orderDetails.productType==="paper"&&!check'>
+							<md-option value="{{s}}"  ng-repeat="s in paper">{{s}}</md-option>
+							<md-option value="other">Other</md-option>
+						</md-select>
+						<div class="errors" ng-messages="myForm.favoriteColor.$error">
+							<div ng-message="required">Required</div>
 						</div>
-					<br>
+					</md-input-container>
+					<md-input-container flex ng-show="orderDetails.paperType ==='other'"  style="margin:10px 0px 0px !important;">
+							 <label><md-tooltip  md-direction="bottom">
+								change
+							</md-tooltip>Enter</label>
+							 <input ng-disabled="check"  ng-required="orderDetails.paperType==='other'" type="text" name="Height"  ng-model="orderDetails.paperTypeOther"/><br>
+					</md-input-container>
+					</div>
+					<md-checkbox ng-model="check" ng-disabled="orderDetails.productType ==='nonPaper'" ng-click="orderDetails.paperType ='need help'" aria-label="Checkbox 1" style="margin-bottom: 10px !important; margin-left:12px !important;"><md-tooltip  md-direction="bottom">
+					 change
+				 </md-tooltip>need help</md-checkbox>
 
-				 <!-- comments -->
-				 <md-input-container class="md-block">
-							<label>Special Instructions</label>
-							<input  type="text" name="Quantity"  ng-model="orderDetails.comment"/>
-				 </md-input-container>
+				 <span style="font-size:20px"><b>Finish</b></span>
+
+				 <div class="" layout="row">
+							 <md-input-container flex style="margin:12px 0px 0px !important;">
+								 <label><md-tooltip  md-direction="bottom">
+									change
+								</md-tooltip>Select Finish Type</label>
+								 <md-select ng-disabled="(orderDetails.productType ==='nonPaper')||(checkFin)" name="paperType" ng-model="orderDetails.finish" ng-disabled="orderDetails.productType ==='nonPaper'"  ng-required="orderDetails.productType === 'paper'&&!checkFin">
+									 <md-option value="{{s}}"  ng-repeat="s in finishArr">{{s}}</md-option>
+								 </md-select>
+								 <div class="errors" ng-messages="myForm.favoriteColor.$error">
+									 <div ng-message="required">Required</div>
+								 </div>
+							 </md-input-container>
+							 <md-input-container flex style="margin:12px 0px 0px !important;">
+								 <label><md-tooltip  md-direction="bottom">
+									change
+								</md-tooltip>Sides</label>
+								 <md-select ng-disabled="(orderDetails.productType ==='nonPaper')||(checkFin)" name="paperType" ng-model="orderDetails.sides" ng-disabled="orderDetails.productType ==='nonPaper'"  ng-required="orderDetails.productType === 'paper'&&!checkFin">
+									 <md-option value="{{s}}"  ng-repeat="s in sides">{{s}}</md-option>
+								 </md-select>
+								 <div class="errors" ng-messages="myForm.favoriteColor.$error">
+									 <div ng-message="required">Required</div>
+								 </div>
+							 </md-input-container>
+							 </div>
+							 <md-checkbox ng-model="checkFin" ng-disabled="orderDetails.productType ==='nonPaper'" ng-click="orderDetails.finish='need help'" aria-label="Checkbox 1" style="margin-bottom: 10px !important; margin-left:12px !important;"><md-tooltip  md-direction="bottom">
+								change
+							</md-tooltip>need help</md-checkbox>
+
+					<span style="font-size:20px"><b>Cutting</b></span>
+							<md-input-container flex style="margin:10px 0px 0px !important;">
+	 						 <label><md-tooltip  md-direction="bottom">
+	 							change
+	 						</md-tooltip>Select Cutting Type</label>
+	 						 <md-select  name="cutting" ng-model="orderDetails.cutting"  ng-disabled="orderDetails.productType ==='nonPaper'" ng-required="orderDetails.productType === 'paper'">
+	 							 <md-option value="{{s}}"  ng-repeat="s in getcutting">{{s}}</md-option>
+	 						 </md-select>
+	 						 <div class="errors" ng-messages="orderForm.cutting.$error">
+	 							 <div ng-message="required">Required</div>
+	 						 </div>
+	 					 </md-input-container>
+						  </div>
+         </form>
+					</div>
 
 
 
+				</md-content>
 
+		</div>
+
+	<div class="col-md-6">
+		<md-content  ng-show="orderDetails.orderType==='existing'" class="md-whiteframe-2dp">
+			<div class="" layout-padding>
+				<form name="selectProductForm">
+				<div  layout="row" layout-align="space-between center">
+
+
+
+					<md-input-container class="md-block flex" style="margin:12px 0px  !important;">
+						<label>
+						 <md-tooltip md-direction="bottom">
+							 select the product that have been saved in your price list.
+						 </md-tooltip>
+						Select Product</label>
+						<md-select  name="selectProduct" ng-model="orderDetails.productName" ng-disabled="orderDetails.orderType === 'custom'"  	ng-required="orderDetails.orderType === 'existing'">
+							<md-option value="{{s}}" ng-click="getExistingOrderDetails(s);"  ng-repeat=" s in existingOrders" >{{s.productTitle}}</md-option>
+						</md-select>
+						<!-- <div class="errors" ng-messages="myForm.favoriteColor.$error">
+							<div ng-message="required">Required</div>
+						</div> -->
+					</md-input-container>
 				</div>
-
-         <!-- MF -->
-
-				 <br>
-				<input type="file" file-model="file"/>
-				<button class="btn btn-default" ng-click="uploadFile()">upload me</button> 
-
-				<br>
-				<md-button class="md-raised md-primary" ng-show="orderDetails.orderType === 'existing'" ng-disabled="orderForm.$invalid" ng-click="goToPath('orderSummary')" >Next</md-button>
-				<!-- <a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" href="#/dashboard/orderSummary">Next</a> -->
-       <md-button ng-show="orderDetails.orderType === 'custom'" ng-click="goToPath('requestSummary')" ng-disabled="orderForm.$invalid" class="md-raised md-primary">Request A qoute</md-button>
-				<!-- <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'custom'" href="#/dashboard/requestSummary">Request A qoute</a> -->
-				<br>
-
-
+					</form>
 			</div>
-		</form>
 
-	</p>
-</div>
-</div>
+		</md-content>
+		<br>
+		<md-content class="md-whiteframe-2dp">
+
+		 <div class="" ng-show="orderDetails.orderType" layout-padding>
+			 <span style="font-size:20px"><b>Artwork</b></span>
+
+			 <div  layout="row" layout-align="space-between center">
+
+	 <div class="" layout="row">
+
+
+				 <md-radio-group ng-model="upload_file" layout="row" class="">
+				 <md-radio-button value="upload" class="md-primary">Upload</md-radio-button>
+				 <md-radio-button value="choose" >	select from files</md-radio-button>
+				 <md-radio-button value="notDecide" >	Not decided</md-radio-button>
+				 <md-radio-button value="same">	Use Same </md-radio-button>
+			 </md-radio-group>
+		 </div>
+		 </div>
+			 <div layout="row">
+					 <br> <br>
+					 <div ng-hide="upload_file==='choose' " class="">
+
+						 <div  id="fileuploader">Upload</div>
+							<!-- <input  type="file" file-model="file" required/> -->
+					 </div>
+					 <div ng-hide="upload_file==='upload'" class="" layout="row">
+
+						 <md-input-container class="md-block" flex>
+
+							 <label>Select file</label>
+							 <md-select  name="selectProduct" ng-model="orderDetails.fileName" ng-required="upload_file==='choose'">
+								 <md-option value="{{s}}"  ng-repeat=" s in details" >{{s.fileName}}</md-option>
+							 </md-select>
+							 <div class="errors" ng-messages="myForm.favoriteColor.$error">
+								 <div ng-message="required">Required</div>
+							 </div>
+						 </md-input-container>
+					 </div>
+			 </div>
+			 </div>
+			 </md-content>
+			 <br>
+
+			 <md-content ng-show="productDetailsForm.$valid" class="md-whiteframe-2dp">
+
+		 <div class="" layout-padding layout="column">
+			 <span style="font-size:20px"><b>Product Details</b></span>
+       <form name="orderForm" >
+        <div class="" layout="row">
+
+					 <md-input-container flex style="margin:10px 0px 0px !important;">
+							 <label>
+								 <md-tooltip  md-direction="bottom">
+									change
+								</md-tooltip>Quantity</label>
+							 <input required type="number" name="Quantity"  ng-model="orderDetails.quantity"/>
+					</md-input-container >
+					<md-input-container flex  style="margin:10px 0px 0px !important;">
+							 <label><md-tooltip  md-direction="bottom">
+								change
+							</md-tooltip>Height</label>
+							 <input required type="number" name="Height"  ng-model="orderDetails.heightdim"/>
+					</md-input-container>
+						<md-input-container flex  style="margin:10px 0px 0px !important;">
+								 <label><md-tooltip  md-direction="bottom">
+									change
+								</md-tooltip>Width</label>
+								 <input required type="number" name="Width"  ng-model="orderDetails.widthdim"/>
+						</md-input-container>
+
+			<md-input-container flex style="margin:10px 0px 0px !important;">
+				<label><md-tooltip  md-direction="bottom">
+				 change
+			 </md-tooltip>Dimensions  </label>
+				<md-select  name="dimensions" ng-model="orderDetails.dimensions"  required>
+					<md-option value="{{s}}"  ng-repeat="s in dimensions">{{s}}</md-option>
+				</md-select>
+				<div class="errors" ng-messages="myForm.favoriteColor.$error">
+					<div ng-message="required">Required</div>
+				</div>
+			</md-input-container>
+
+	</div>
+
+			<md-input-container class="md-block" style="margin:10px 0px 5px !important;" layout-padding>
+					 <label>&nbspSpecial Instructions</label>
+					 <input  type="text" name="Quantity"  ng-model="orderDetails.comment"/>
+			</md-input-container>
+
+			<md-input-container class="md-block" style="margin:5px 0px 5px !important;" ng-show="orderDetails.orderType === 'custom'" >
+				<label>I need this product in</label>
+				<md-select  name="deliveryTime" ng-model="orderDetails.productTime"  ng-model="orderDetails.deliveryTime"  >
+					<md-option value="5 Days">5 Days</md-option>
+					<md-option value="10 Days">10 Days</md-option>
+					<md-option value="Next Month">Next Month</md-option>
+			</md-input-container>
+			</form>
+			</div>
+
+			<div class="" layout-padding layout="row" layout-align="center center">
+			<md-button class="md-raised md-primary" ng-show="orderDetails.orderType === 'existing'" ng-disabled="(orderForm.$invalid)||!isUploaded" ng-click="goToPath('orderSummary')" >Next</md-button>
+			<!-- <a type="submit" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'existing'" href="#/dashboard/orderSummary">Next</a> -->
+			<md-button ng-show="orderDetails.orderType === 'custom'" ng-click="goToPath('requestSummary')" ng-disabled="(orderForm.$invalid)||!isUploaded" class="md-raised md-primary">Request A qoute</md-button>
+			<!-- <a class="btn btn-primary btn-lg btn-outline btn-rounded" ng-show="orderDetails.orderType === 'custom'" href="#/dashboard/requestSummary">Request A qoute</a> -->
+      </div>
+			 </md-content>
+
+	</div>
 </div>

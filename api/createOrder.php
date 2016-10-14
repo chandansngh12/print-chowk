@@ -9,20 +9,24 @@ $result=mysql_query($sql);
 }
 
 function placeOrder($creditAmount){
- echo $sql = "INSERT INTO orders 
+ $sql = "INSERT INTO orders 
 (`orderType`, `productType`, `productTitle`, `productName`, `quantity`,`dimensions`,`heightdim`,`widthdim`,`finish`,`cutting`,`comment`,`userId`,
-`fileName`,`amount`,`status`,`paymentType`,`city`,`state`,`landmark`,`zipcode`) 
+`fileName`,`amount`,`status`,`paymentType`) 
 VALUES ('".$_POST['orderType']."','".$_POST['productType']."','".$_POST['productTitle']."','".$_POST['productName']."','".$_POST['quantity']."',
 '".$_POST['dimensions']."','".$_POST['heightdim']."','".$_POST['widthdim']."','".$_POST['finish']."','".$_POST['cutting']."','".$_POST['comment']."',
-'".$_POST['login_user']."','".$_POST['imageUrl']."',".$_POST['amount'].",'".$_POST['orderStatus']."','".$_POST['paymentType']."','".$_POST['city']."','".$_POST['state']."',
-'".$_POST['landmark']."','".$_POST['zipCode']."')";
+'".$_POST['login_user']."','".$_POST['imageUrl']."',".$_POST['amount'].",'".$_POST['orderStatus']."','".$_POST['paymentType']."')";
 $result=mysql_query($sql);
 
 $creditAmount=$_POST['amount'] - $creditAmount;
 if ($result)
 	{
 		debitAmount($_POST['amount'],$_POST['login_user'],$creditAmount);
-		echo "success";
+		 $order="select max(orderId) as orderId from orders where `userId`='".$_POST['login_user']."'";
+        $result=mysql_query($order);
+        $orderId=mysql_fetch_row($result,MYSQL_ASSOC);
+         echo $orderId['orderId'];
+
+//		echo "success";
 	}
 else{
 	echo mysql_error();
@@ -32,12 +36,12 @@ else{
 
 if (isset($_SESSION['login_status']))
 {
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
+if ($_SERVER['REQUEST_METHOD'] )== 'POST' && empty($_POST))
 {
     $_POST = json_decode(file_get_contents('php://input'), true);
 	$paymentType=$_POST['paymentType'];
 
-if($paymentType=="1"){
+if($paymentType=="Pay on Account"){
  	$amountSql="SELECT creditAmount from accountCredit where userId='".$_POST['login_user']."'";
 	$amountResult=mysql_query($amountSql);
 	if($amountResult){

@@ -1,7 +1,29 @@
-<div>
-	<a ui-sref="orderSummary" class="pull-right btn btn-primary btn-outline btn-rounded">Back</a>
-	<h2>Shipping Details <small> Enter your shipping details </small></h2>
-	<span class="glyphicon glyphicon-repeat bg-fade"></span>
+
+<md-toolbar class=" md-default">
+<div class="md-toolbar-tools md-title" style="background:#ecf0f1"layout="row" layout-padding>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn" aria-label="Use Android">
+	          <md-icon class="material-icons" style="color: greenyellow;">filter_1</md-icon>
+
+	        </md-button>New Order</span>
+	<span flex style="font-size:25px; background:#336688;"><md-button class="md-fab md-mini md-warn " aria-label="Use Android">
+					          <md-icon class="material-icons" style="color: greenyellow;">filter_2</md-icon>
+					        </md-button>Confirm Order</span>
+
+ <span flex style="font-size:25px; background:#336688; "><md-button class="md-fab md-mini md-warn " aria-label="Use Android">
+									          <md-icon class="material-icons" style="color: greenyellow;">filter_3</md-icon>
+									        </md-button>Shipping</span>
+<span flex style="font-size:25px; background:#C0C0C0;"><md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+												 									          <md-icon class="material-icons" style="color: greenyellow;">filter_4</md-icon>
+												 									        </md-button>Payment</span>
+
+<!-- <span><i class="material-icons">add_shopping_cart</i> New Order</span> -->
+<!-- <span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span>
+<span flex><span class="glyphicon glyphicon-th"></span> &nbsp New Order</span> -->
+
+</div>
+</md-toolbar>
+	<!-- <span class="glyphicon glyphicon-repeat bg-fade"></span> -->
 		<div class="jumbotron md-whiteframe-1dp">
 		<div class="container">
 			<div class="row">
@@ -96,7 +118,7 @@
 						</md-input-container>
 						<md-input-container class="md-block" ng-model="orderDetails.Product.city" >
 								 <label>State</label>
-								 <input ng-required="addressType === 'new_add'" type="number" name="Width"  ng-model="address.state"/>
+								 <input ng-required="addressType === 'new_add'" type="text" name="Width"  ng-model="address.state"/>
 						</md-input-container>
 						<div layout="row" layout-align="start" flex>
  								<md-input-container flex>
@@ -121,8 +143,11 @@
 
 			</div>
 			<br>
-     <center><md-button class="md-raised md-primary" ng-disabled="shippingForm.$invalid||existingForm.$invalid||addressType ===''" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="gotoState()" >Proceed To Payment</a></md-button>
+			<div layout="row" layout-align="end center" class="">
+
+			<md-button ng-click="$state.go('orderSummary')" class="md-raised md-primary"><span class="glyphicon glyphicon-chevron-left"></span>Back</md-button>
+     <md-button class="md-raised md-primary" ng-disabled="shippingForm.$invalid||existingForm.$invalid||addressType ===''" class="btn btn-primary btn-lg btn-outline btn-rounded" ng-click="gotoState()" >Proceed To Payment<span class="glyphicon glyphicon-chevron-right"></span></md-button>
+		</div>
 		</div>
 
-</div>
 </div>

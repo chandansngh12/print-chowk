@@ -6,71 +6,120 @@ angular.module('yapp')
   $scope.dimensions =["mm","cm","inch","ft"];
 	$scope.finishArr=["No Lamination","Matt Lamination","Gloss Lamination","Waterproof Lamination"];
   $scope.getcutting=["Leave White Border","End-to-End"];
+  $scope.sides=["Front","Back"]
   $scope.upload_file="upload";
-  $scope.isUploaded=0;
-  //$scope.check ='false';
+  $scope.isUploaded=false;
+  $scope.productName={};
+  $scope.productTab=0;
+
+  // intialising object for order details
 
 if(getobject.isVisited===0){
 	 $scope.orderDetails =
    {
-		 orderType:"existing",
+		 orderType:null,
 		 productType:"paper",
      nonPaperType:"",
      paperType:"",
      paperTypeOther:"",
 		 productTitle:"",
      productName:"",
-		 quantity:10,
+		 quantity:null,
 		 dimensions:"",
-		 heightdim:0,
-     widthdim:0,
+		 heightdim:null,
+     widthdim:null,
 		 finish:"",
+     sides:"",
      cutting:"  ",
-     comment:" ",
-     imageUrl:" ",
-     amount:10000,
+     comment:"",
+     fileName:" ",
+     amount:null,
      paymentType:"  ",
      orderStatus:"Processing",
      productTime:"",
 	 }
-   getobject.isVisited=1;
+   getobject.isVisited=1;           //the form has been visited in case of page is visited again form other page
 
-    // getobject.Product=$scope.orderDetails;
 }
 
 else{
 
-  $scope.orderDetails = localStorageService.get("orderDetails");
+  $scope.orderDetails = localStorageService.get("orderDetails"); //getting object from local storage of browser
 
 }
 
-//image directive for name
+// jquery pic upload plugin
+     $(document).ready(function()
+         {
+           $scope.testme=$("#fileuploader").uploadFile({
+           url:"http://localhost/print-chowk/api/upload_me.php",
+           fileName:"myfile",
+           multiple:false,
+           dragDrop:false,
+           maxFileCount:1,
 
-     $scope.uploadFile = function(){
-        var file = $scope.file;
-        $scope.orderDetails.imageUrl=$scope.file.name;
-        console.log('file is ' );
-        console.dir(file);
-        var uploadUrl = "http://localhost/print-chowk/api/upload.php";
-        console.log(uploadUrl);
-        if(fileUpload.uploadFileToUrl(file, uploadUrl))
-          {
-            console.log("hello");
-          }
-        else {
-          console.log("no");
-        }
+           onSuccess:function()
+                 {
+                     $scope.orderDetails.fileName=$scope.testme.existingFileNames[0]; //get the file name
+                     $scope.isUploaded=true;
 
-    };
+                 },
+           });
+
+         });
+
 
 
     $scope.goToPath = function(path){
-      localStorageService.set("orderDetails",$scope.orderDetails);
+      $scope.orderDetails.fileName=$scope.testme.existingFileNames[0]; //get the file name
+      localStorageService.set("orderDetails",$scope.orderDetails); //setting object to local storage
       $state.go(path);
+
     }
 
 
-    //
+    $scope.existingOrders ={}; //an object to get existing orders
+
+     //getting existing order details from database
+    $http({
+      method:'GET',
+      url:'http://localhost/print-chowk/api/getOrder.php'
+      })
+       .then(function (response) {
+             $scope.existingOrders=response.data;
+             console.log($scope.existingOrders);
+
+
+        },
+        function errorCallback(response) {
+            console.log(response);
+        });
+
+     //function to get selected order from input dropdown
+        $scope.getExistingOrderDetails = function(x) {
+
+               $scope.orderDetails=x;
+               $scope.changeType();
+               	$scope.productTab=1;
+               console.log($scope.orderDetails);
+
+        }
+
+        //changing the type for numbers was giving error when taken from database
+        $scope.changeType = function() {
+
+                    $scope.orderDetails.quantity= parseInt($scope.orderDetails.quantity);
+                    $scope.orderDetails.heightdim= parseInt($scope.orderDetails.heightdim);
+                    $scope.orderDetails.widthdim= parseInt($scope.orderDetails.widthdim);
+                    $scope.orderDetails.amount= parseInt($scope.orderDetails.amount);
+
+        }
+
+
+
+
+//// test codes
+
     // $scope.obj = {
     //     currentUser: {
     //       username: "testUN",
@@ -112,7 +161,13 @@ else{
     });
     }
 */
-
+// //image directive for name
+//
+//      $scope.uploadFile = function(){
+//         var file = $scope.file;
+//         $scope.orderDetails.imageUrl=$scope.file.name;
+//
+//     };
 
 
  });
